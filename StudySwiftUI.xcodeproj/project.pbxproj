@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6DE2F4E328E4134D0080BF92 /* VIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE2F4E228E4134D0080BF92 /* VIewModel.swift */; };
+		6DE2F4E528E416130080BF92 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE2F4E428E416130080BF92 /* Model.swift */; };
 		6DF1101D28E288E1006A796F /* StudySwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF1101C28E288E1006A796F /* StudySwiftUIApp.swift */; };
 		6DF1101F28E288E1006A796F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF1101E28E288E1006A796F /* ContentView.swift */; };
 		6DF1102128E288E2006A796F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DF1102028E288E2006A796F /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6DE2F4E228E4134D0080BF92 /* VIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIewModel.swift; sourceTree = "<group>"; };
+		6DE2F4E428E416130080BF92 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		6DF1101928E288E0006A796F /* StudySwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudySwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF1101C28E288E1006A796F /* StudySwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySwiftUIApp.swift; sourceTree = "<group>"; };
 		6DF1101E28E288E1006A796F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,8 +100,10 @@
 			children = (
 				6DF1101C28E288E1006A796F /* StudySwiftUIApp.swift */,
 				6DF1101E28E288E1006A796F /* ContentView.swift */,
+				6DE2F4E228E4134D0080BF92 /* VIewModel.swift */,
 				6DF1102028E288E2006A796F /* Assets.xcassets */,
 				6DF1102228E288E2006A796F /* Preview Content */,
+				6DE2F4E428E416130080BF92 /* Model.swift */,
 			);
 			path = StudySwiftUI;
 			sourceTree = "<group>";
@@ -258,7 +264,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DF1101F28E288E1006A796F /* ContentView.swift in Sources */,
+				6DE2F4E328E4134D0080BF92 /* VIewModel.swift in Sources */,
 				6DF1101D28E288E1006A796F /* StudySwiftUIApp.swift in Sources */,
+				6DE2F4E528E416130080BF92 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

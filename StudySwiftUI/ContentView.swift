@@ -8,99 +8,85 @@
 import SwiftUI
 
 struct FirstView: View {
+    
+    @State var currentPage = 0
+    @State private var offset: CGFloat = 0
+    @State private var index: Int = 0
+    
     var body: some View {
-        NavigationView {
-            ZStack {
-            VStack {
-                Spacer()
-            Text("九月とはいえまだまだ夏です")
-                .font(.system(size: 22))
-                .multilineTextAlignment(.center)
-                .frame(width: 320.0)
-            Text("体調管理には気を使いましょう！")
-            Image("first")
-                .resizable()
-                .frame(width: 300.0, height: 300.0)
+        VStack {
             Spacer()
-                NavigationLink("次へ", destination: SecondView())
-                    .frame(width: 300.0, height: 80.0)
-                    .background(Color.blue)
-                    .foregroundColor(Color.white)
-                    .clipShape(Capsule())
-                Spacer()
-            }
+            Text("題名")
+                .font(.largeTitle)
+                .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        GeometryReader { geometry in
+            ScrollView(.horizontal, showsIndicators: false) {
+                Image("first").resizable()
+                            }
+            .content.offset(x: self.offset)
+                        .frame(width: geometry.size.width, height: nil, alignment: .leading)
+                        .gesture(DragGesture()
+                            .onChanged({ value in
+                                self.offset = value.translation.width - geometry.size.width * CGFloat(self.index)
+                            })
+                            .onEnded({ value in // 4. Dragが完了したら、Drag量に応じて、indexを更新
+                                let scrollThreshold = geometry.size.width / 2
+                                if value.predictedEndTranslation.width < -scrollThreshold {
+                                    if currentPage <= 3 {
+                                    currentPage += 1
+                                    }
+                                } else if value.predictedEndTranslation.width > scrollThreshold {
+                                    if currentPage >= 1 {
+                                    currentPage -= 1
+                                    }
+                                }
+                            })
+                        )
         }
-    }
-    }
-}
-
-struct SecondView: View {
-    var body: some View {
-            VStack {
-                Spacer()
-            Text("日頃の記録を忘れていると…")
-                .font(.system(size: 22))
-                .multilineTextAlignment(.center)
-                .frame(width: 320.0)
-            Text("いつから体調が悪いんだっけ…？")
-            Image("second")
-                .resizable()
-                .frame(width: 300.0, height: 300.0)
+        .frame(width: 300.0, height: 300.0)
+            Text("ここにViewModelからの変数")
+                .font(.title)
+                .padding(.horizontal)
             Spacer()
-            NavigationLink("次へ", destination: ThirdView())
-                    .frame(width: 300.0, height: 80.0)
-                    .background(Color.blue)
-                    .foregroundColor(Color.white)
-                    .clipShape(Capsule())
-            Spacer()
+            pageControl(current: currentPage)
+            Button(action: {
+                if currentPage < 4 {
+                currentPage += 1
+                    print(currentPage)
+                }
+            }) {
+                Text("次へ")
+                    .font(.title)
             }
-            .padding(.bottom)
-    }
-}
-
-struct ThirdView: View {
-    var body: some View {
-            VStack {
-                Spacer()
-            Text("そんなときにこのアプリ！")
-                .font(.system(size: 22))
-                .multilineTextAlignment(.center)
-                .frame(width: 320.0)
-            Text("さあ！あなたの健康を守りましょう！")
-            Image("mamakarute")
-                .frame(width: 300.0, height: 260.0)
-                .background(Color.pink)
-            Spacer()
-            NavigationLink("スタート！", destination: StartView())
-                    .frame(width: 300.0, height: 80.0)
-                    .background(Color.blue)
-                    .foregroundColor(Color.white)
-                    .clipShape(Capsule())
-            Spacer()
-            }
-            .padding(.bottom)
-    }
-}
-
-struct StartView: View {
-    var body: some View {
-        ZStack {
-            Color.pink
-                .ignoresSafeArea()
-            Spacer()
-            Image("mamakarute")
-                .resizable()
-                .frame(width: 300.0, height: 260.0)
+            .frame(width: 300.0, height: 70.0)
+            .foregroundColor(Color.white)
+            .background(Color.pink)
+            .cornerRadius(50)
             Spacer()
         }
     }
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         FirstView()
-        SecondView()
-        ThirdView()
-        StartView()
     }
+}
+
+struct pageControl: UIViewRepresentable {
+    
+    var current = 0
+    
+    func makeUIView(context: UIViewRepresentableContext<pageControl>) -> UIPageControl {
+        let page = UIPageControl()
+        page.numberOfPages = 5
+        page.pageIndicatorTintColor = .gray
+        return page
+    }
+    
+    func updateUIView(_ uiView: UIPageControl, context: UIViewRepresentableContext<pageControl>) {
+        uiView.currentPage = current
+    }
+    
+    
+    
 }
