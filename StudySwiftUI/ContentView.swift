@@ -12,16 +12,29 @@ struct FirstView: View {
     @State var currentPage = 0
     @State private var offset: CGFloat = 0
     @State private var index: Int = 0
+    @State var modelArray:[String] = []
+    
+    
+    var viewModel = ViewModel()
+    
     
     var body: some View {
         VStack {
             Spacer()
-            Text("題名")
+            Text(viewModel.title[currentPage])
                 .font(.largeTitle)
+                .multilineTextAlignment(.center)
                 .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         GeometryReader { geometry in
             ScrollView(.horizontal, showsIndicators: false) {
-                Image("first").resizable()
+                switch currentPage {
+                case 0: Image("first").resizable()
+                case 1: Image("second").resizable()
+                case 2: Image("third").resizable()
+                case 3: Image("mamakarute").resizable().background(Color.pink)
+                default:
+                    Image("first").resizable()
+                }
                             }
             .content.offset(x: self.offset)
                         .frame(width: geometry.size.width, height: nil, alignment: .leading)
@@ -29,10 +42,10 @@ struct FirstView: View {
                             .onChanged({ value in
                                 self.offset = value.translation.width - geometry.size.width * CGFloat(self.index)
                             })
-                            .onEnded({ value in // 4. Dragが完了したら、Drag量に応じて、indexを更新
+                            .onEnded({ value in
                                 let scrollThreshold = geometry.size.width / 2
                                 if value.predictedEndTranslation.width < -scrollThreshold {
-                                    if currentPage <= 3 {
+                                    if currentPage <= 2 {
                                     currentPage += 1
                                     }
                                 } else if value.predictedEndTranslation.width > scrollThreshold {
@@ -40,23 +53,32 @@ struct FirstView: View {
                                     currentPage -= 1
                                     }
                                 }
+                            withAnimation {
+                                self.offset = -geometry.size.width * CGFloat(self.index)
+                                                }
                             })
                         )
         }
         .frame(width: 300.0, height: 300.0)
-            Text("ここにViewModelからの変数")
+            Spacer()
+            Text(viewModel.text[currentPage])
                 .font(.title)
                 .padding(.horizontal)
             Spacer()
             pageControl(current: currentPage)
             Button(action: {
-                if currentPage < 4 {
+                if currentPage < 3 {
                 currentPage += 1
                     print(currentPage)
                 }
             }) {
+                if currentPage < 3 {
                 Text("次へ")
                     .font(.title)
+                } else if currentPage == 3 {
+                    Text("スタート！")
+                        .font(.title)
+                }
             }
             .frame(width: 300.0, height: 70.0)
             .foregroundColor(Color.white)
@@ -64,8 +86,8 @@ struct FirstView: View {
             .cornerRadius(50)
             Spacer()
         }
+        }
     }
-}
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         FirstView()
@@ -78,7 +100,7 @@ struct pageControl: UIViewRepresentable {
     
     func makeUIView(context: UIViewRepresentableContext<pageControl>) -> UIPageControl {
         let page = UIPageControl()
-        page.numberOfPages = 5
+        page.numberOfPages = 4
         page.pageIndicatorTintColor = .gray
         return page
     }
