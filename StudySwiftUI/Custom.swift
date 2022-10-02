@@ -54,20 +54,26 @@ struct TextView: View {
 
 struct ButtonView: View {
     
-    var string: String
-    
-    init(_ string: String) {
-        self.string = string
-    }
+    @Binding var tagNum: Int
+    var newView = NewView()
     
     var body: some View {
-        Button(self.string) {
-            var newView = NewView()
-            newView.currentPage += 1
+        if tagNum <= 2 {
+        Button("次へ") {
+            tagNum += 1
         }
         .frame(width: 300.0, height: 50.0)
         .background(Color.blue)
         .foregroundColor(Color.white)
         .cornerRadius(50)
+        } else if tagNum == 3 {
+            Button("スタート！") {
+                
+            }
+            .frame(width: 300.0, height: 50.0)
+            .background(Color.blue)
+            .foregroundColor(Color.white)
+            .cornerRadius(50)
+        }
     }
 }

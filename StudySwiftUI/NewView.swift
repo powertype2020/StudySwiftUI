@@ -9,37 +9,24 @@ import Foundation
 import SwiftUI
 
 struct NewView: View {
-    
-    var currentPage = 0
-    let viewModel = ViewModel()
+
+    @ObservedObject var viewModel = ViewModel()
+    @State var currentPage = 0
     
     var body: some View {
         VStack {
-        TabView {
+            TabView(selection: $currentPage) {
+                ForEach(0..<viewModel.model.title.count) {index in
             VStack {
-                TitleView(viewModel.model.title[0])
-                ImageView(viewModel.model.imageString[0])
-                TextView(viewModel.model.text[0])
+                TitleView(viewModel.model.title[index])
+                ImageView(viewModel.model.imageString[index])
+                TextView(viewModel.model.text[index])
+                    .tag(index)
             }
-            VStack {
-                TitleView(viewModel.model.title[1])
-                ImageView(viewModel.model.imageString[1])
-                TextView(viewModel.model.text[1])
-            }
-            VStack {
-                TitleView(viewModel.model.title[2])
-                ImageView(viewModel.model.imageString[2])
-                TextView(viewModel.model.text[2])
-            }
-            VStack {
-                TitleView(viewModel.model.title[3])
-                ImageView(viewModel.model.imageString[3])
-                    .background(Color.pink)
-                TextView(viewModel.model.text[3])
             }
         }
         .tabViewStyle(PageTabViewStyle())
-        ButtonView("次へ")
+            ButtonView(tagNum: $currentPage)
             Spacer()
         }
     }
