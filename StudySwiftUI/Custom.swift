@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+
 struct TitleView: View {
     
     var string: String
@@ -54,26 +55,37 @@ struct TextView: View {
 
 struct ButtonView: View {
     
-    @Binding var tagNum: Int
-    var newView = NewView()
+    @EnvironmentObject var viewModel: ViewModel
     
     var body: some View {
-        if tagNum <= 2 {
-        Button("次へ") {
-            tagNum += 1
-        }
-        .frame(width: 300.0, height: 50.0)
-        .background(Color.blue)
-        .foregroundColor(Color.white)
-        .cornerRadius(50)
-        } else if tagNum == 3 {
-            Button("スタート！") {
-                
-            }
-            .frame(width: 300.0, height: 50.0)
-            .background(Color.blue)
-            .foregroundColor(Color.white)
-            .cornerRadius(50)
+                Button("次へ") {
+                    viewModel.toggleButton()
+                }
+                .frame(width: 300.0, height: 50.0)
+                .background(Color.blue)
+                .foregroundColor(Color.white)
+                .cornerRadius(50)
         }
     }
-}
+
+struct StartView: View {
+    
+    @EnvironmentObject var viewModel: ViewModel
+    
+    var body: some View {
+        TabView(selection: $viewModel.currentPage) {
+            ForEach(viewModel.modelList) {tagNum in
+        VStack {
+            TitleView(tagNum.title)
+            ImageView(tagNum.imageString)
+            TextView(tagNum.text)
+                .tag(tagNum)
+        }
+        }
+    }
+    .tabViewStyle(PageTabViewStyle())
+    .onChange(of: viewModel.currentPage) {tagNum in
+        viewModel.currentPage = tagNum
+        }
+    }
+    }

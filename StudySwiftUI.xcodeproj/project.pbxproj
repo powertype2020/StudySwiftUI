@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D4A6D9528E6B4910032C20D /* NewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A6D9428E6B4910032C20D /* NewView.swift */; };
+		6D4A6D9528E6B4910032C20D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A6D9428E6B4910032C20D /* ContentView.swift */; };
 		6D4A6D9928E6CC550032C20D /* Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A6D9828E6CC550032C20D /* Custom.swift */; };
 		6DE2F4E328E4134D0080BF92 /* VIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE2F4E228E4134D0080BF92 /* VIewModel.swift */; };
 		6DE2F4E528E416130080BF92 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE2F4E428E416130080BF92 /* Model.swift */; };
@@ -37,7 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6D4A6D9428E6B4910032C20D /* NewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewView.swift; sourceTree = "<group>"; };
+		6D4A6D9428E6B4910032C20D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6D4A6D9828E6CC550032C20D /* Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Custom.swift; sourceTree = "<group>"; };
 		6DE2F4E228E4134D0080BF92 /* VIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIewModel.swift; sourceTree = "<group>"; };
 		6DE2F4E428E416130080BF92 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 				6DF1102028E288E2006A796F /* Assets.xcassets */,
 				6DF1102228E288E2006A796F /* Preview Content */,
 				6DE2F4E428E416130080BF92 /* Model.swift */,
-				6D4A6D9428E6B4910032C20D /* NewView.swift */,
+				6D4A6D9428E6B4910032C20D /* ContentView.swift */,
 				6D4A6D9828E6CC550032C20D /* Custom.swift */,
 			);
 			path = StudySwiftUI;
@@ -266,7 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D4A6D9528E6B4910032C20D /* NewView.swift in Sources */,
+				6D4A6D9528E6B4910032C20D /* ContentView.swift in Sources */,
 				6DE2F4E328E4134D0080BF92 /* VIewModel.swift in Sources */,
 				6D4A6D9928E6CC550032C20D /* Custom.swift in Sources */,
 				6DF1101D28E288E1006A796F /* StudySwiftUIApp.swift in Sources */,

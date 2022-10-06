@@ -10,6 +10,23 @@ import SwiftUI
 
 class ViewModel: ObservableObject {
     
-    @Published var model: Model = Model()
+    @Published var currentPage = 0
+    
+    let modelList = [
+        Model(id: 0, title: "はじめまして！", text: "このアプリは、あなたやお子さまの健康を考えるアプリです！", imageString: "first"),
+        Model(id: 1, title: "健康管理", text: "病気になりがちな現代、体温や体調などを記録することは大事です。", imageString: "second"),
+        Model(id: 2, title: "最初はヘルプ！", text: "まずはじめに、カレンダー画面の左下にあるHelpを確認しよう！", imageString: "third"),
+        Model(id: 3, title: "Start!", text: "使い方は自由です！さあ、始めましょう！", imageString: "mamakarute")
+    ]
+    
+    func toggleButton() {
+        if currentPage <= 2 {
+            currentPage += 1
+            print(currentPage)
+        } else if currentPage == 3 {
+            print("もう押せません")
+        }
+    }
+    
     
 }
