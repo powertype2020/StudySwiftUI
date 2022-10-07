@@ -8,25 +8,25 @@
 import Foundation
 import SwiftUI
 
-struct ContentView: View {
+struct WalkthroughView: View {
 
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject var viewModel = WalkthroughViewModel()
     
     var body: some View {
         VStack {
-            StartView()
-                .environmentObject(viewModel)
-            ButtonView()
+            StartView(viewModel: viewModel)
+            NextButtonView()
                 .environmentObject(viewModel)
             Spacer()
         }
+        .background(Color.pink)
     }
     
 }
 
-struct NewView_Previews: PreviewProvider {
-    static let viewModel = ViewModel()
+struct WalkthroughView_Previews: PreviewProvider {
+    static let viewModel = WalkthroughViewModel()
     static var previews: some View {
-        ContentView()
+        WalkthroughView()
     }
 }
