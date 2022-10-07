@@ -11,6 +11,8 @@ import SwiftUI
 class WalkthroughViewModel: ObservableObject {
     
     @Published var currentPage = 0
+    @Published var backButtonEnable = false
+    @Published var nextButtonTextChange = false
     
     let pageList = [
         Model(id: 0, title: "はじめまして！", text: "このアプリは、あなたやお子さまの健康を考えるアプリです！", imageString: "first"),
@@ -24,19 +26,37 @@ class WalkthroughViewModel: ObservableObject {
             currentPage += 1
             print(currentPage)
         } else if currentPage == 3 {
+            //ここにmamakaruteのスタート画面への処理を書く
             print("もう押せません")
             print(pageList.count)
         }
     }
     
     func backButton() {
-        if currentPage >= 3 {
+        if currentPage >= 1 {
             currentPage -= 1
             print(currentPage)
         } else if currentPage == 0 {
             print("もう押せません")
         }
     }
+    
+    func toggleBackButton() {
+        if currentPage >= 1 {
+            backButtonEnable = true
+        } else if currentPage == 0 {
+            backButtonEnable = false
+    }
+    }
+    
+    func toggleNextButtonText() {
+        if currentPage == 3 {
+            nextButtonTextChange = true
+        } else if currentPage <= 2 {
+            nextButtonTextChange = false
+        }
+    }
+    
     
     
 }

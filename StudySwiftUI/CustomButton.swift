@@ -14,7 +14,7 @@ struct NextButtonView: View {
     @EnvironmentObject var viewModel: WalkthroughViewModel
     
     var body: some View {
-                Button("次へ") {
+        Button("\(viewModel.nextButtonTextChange ? "スタート！": "次へ")") {
                     viewModel.nextButton()
                 }
                 .frame(width: 300.0, height: 50.0)
@@ -33,9 +33,12 @@ struct BackButtonView: View {
             viewModel.backButton()
         }) {
             HStack {
-                Image(systemName: "arrowshape.turn.up.left.fill")
-                Text("Button")
+                Image(systemName: "chevron.left")
+                    .font(.system(size: 50))
+                Text("前のページへ戻る")
             }
         }
+        .frame(width: 200.0, height: 50.0)
+        .disabled(!viewModel.backButtonEnable)
         }
 }
