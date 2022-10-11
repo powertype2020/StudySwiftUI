@@ -14,10 +14,10 @@ struct WalkthroughView: View {
     
     var body: some View {
         VStack {
-            StartView(viewModel: viewModel)
-            NextButtonView()
-                .environmentObject(viewModel)
+            WalkthroughDetailView(viewModel: viewModel)
             Spacer()
+            NextButtonView(viewModel: viewModel)
+                .padding(.bottom)
         }
         .background(Color.pink)
     }

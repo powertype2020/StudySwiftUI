@@ -11,7 +11,7 @@ import SwiftUI
 
 struct NextButtonView: View {
     
-    @EnvironmentObject var viewModel: WalkthroughViewModel
+    @ObservedObject var viewModel: WalkthroughViewModel
     
     var body: some View {
         Button("\(viewModel.nextButtonTextChange ? "スタート！": "次へ")") {
@@ -26,7 +26,7 @@ struct NextButtonView: View {
 
 struct BackButtonView: View {
     
-    @EnvironmentObject var viewModel: WalkthroughViewModel
+    @ObservedObject var viewModel: WalkthroughViewModel
     
     var body: some View {
         Button(action: {
@@ -34,11 +34,11 @@ struct BackButtonView: View {
         }) {
             HStack {
                 Image(systemName: "chevron.left")
-                    .font(.system(size: 50))
+                    .font(.system(size: 30))
                 Text("前のページへ戻る")
             }
         }
-        .frame(width: 200.0, height: 50.0)
+        .frame(width: 200.0, height: 30.0)
         .disabled(!viewModel.backButtonEnable)
         }
 }
