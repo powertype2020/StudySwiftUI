@@ -46,7 +46,7 @@ class WalkthroughViewModel: ObservableObject {
             backButtonEnable = true
         } else {
             backButtonEnable = false
-    }
+        }
     }
     
     func toggleNextButtonText() {
@@ -56,7 +56,4 @@ class WalkthroughViewModel: ObservableObject {
             nextButtonTextChange = false
         }
     }
-    
-    
-    
 }

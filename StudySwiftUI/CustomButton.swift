@@ -15,14 +15,14 @@ struct NextButtonView: View {
     
     var body: some View {
         Button("\(viewModel.nextButtonTextChange ? "スタート！": "次へ")") {
-                    viewModel.nextButton()
-                }
-                .frame(width: 300.0, height: 50.0)
-                .background(Color.blue)
-                .foregroundColor(Color.white)
-                .cornerRadius(50)
+            viewModel.nextButton()
         }
+        .frame(width: 300.0, height: 50.0)
+        .background(Color.blue)
+        .foregroundColor(Color.white)
+        .cornerRadius(50)
     }
+}
 
 struct BackButtonView: View {
     
@@ -40,5 +40,5 @@ struct BackButtonView: View {
         }
         .frame(width: 200.0, height: 30.0)
         .disabled(!viewModel.backButtonEnable)
-        }
+    }
 }

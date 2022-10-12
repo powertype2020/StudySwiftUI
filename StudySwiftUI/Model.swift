@@ -14,4 +14,4 @@ struct Model: Identifiable, Hashable {
     let text: String
     let imageString: String
     
-    }
+}

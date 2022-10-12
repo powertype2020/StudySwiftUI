@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct WalkthroughView: View {
-
+    
     @ObservedObject var viewModel = WalkthroughViewModel()
     
     var body: some View {
@@ -21,7 +21,6 @@ struct WalkthroughView: View {
         }
         .background(Color.pink)
     }
-    
 }
 
 struct WalkthroughView_Previews: PreviewProvider {

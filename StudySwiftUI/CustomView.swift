@@ -23,23 +23,23 @@ struct WalkthroughDetailView: View {
         Spacer()
         TabView(selection: $viewModel.currentPage) {
             ForEach(viewModel.pageList) {tagNum in
-        VStack {
-            Text(tagNum.title)
-                .font(.largeTitle)
-                .padding(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/)
-            Image(tagNum.imageString)
-                .resizable()
-                .frame(width: 250.0, height: 250.0)
-            Text(tagNum.text)
-                .font(.title2)
+                VStack {
+                    Text(tagNum.title)
+                        .font(.largeTitle)
+                        .padding(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/)
+                    Image(tagNum.imageString)
+                        .resizable()
+                        .frame(width: 250.0, height: 250.0)
+                    Text(tagNum.text)
+                        .font(.title2)
+                }
+            }
         }
+        .tabViewStyle(PageTabViewStyle())
+        .onChange(of: viewModel.currentPage) {tagNum in
+            viewModel.currentPage = tagNum
+            viewModel.toggleBackButton()
+            viewModel.toggleNextButtonText()
         }
     }
-    .tabViewStyle(PageTabViewStyle())
-    .onChange(of: viewModel.currentPage) {tagNum in
-        viewModel.currentPage = tagNum
-        viewModel.toggleBackButton()
-        viewModel.toggleNextButtonText()
-        }
-    }
-    }
+}
