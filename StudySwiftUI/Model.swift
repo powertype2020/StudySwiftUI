@@ -7,11 +7,21 @@
 
 import Foundation
 
-struct Model: Identifiable, Hashable {
+struct WTModel: Identifiable, Hashable {
     
     let id: Int
     let title: String
     let text: String
     let imageString: String
+    
+}
+
+struct MusicData: Codable {
+    
+    let artistId: Int
+    let artistName: String
+    let collectionName: String
+    let trackName: String
+    let artworkUrl100: URL
     
 }

@@ -17,6 +17,9 @@ struct NextButtonView: View {
         Button("\(viewModel.nextButtonTextChange ? "スタート！": "次へ")") {
             viewModel.nextButton()
         }
+        .sheet(isPresented: $viewModel.startNextShow) {
+            HomeView()
+        }
         .frame(width: 300.0, height: 50.0)
         .background(Color.blue)
         .foregroundColor(Color.white)

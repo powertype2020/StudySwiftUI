@@ -23,9 +23,18 @@ struct WalkthroughView: View {
     }
 }
 
+struct HomeView: View {
+    
+    var body: some View {
+        SerchMusicView()
+    }
+}
+
+
 struct WalkthroughView_Previews: PreviewProvider {
     static let viewModel = WalkthroughViewModel()
     static var previews: some View {
         WalkthroughView()
+        HomeView()
     }
 }
