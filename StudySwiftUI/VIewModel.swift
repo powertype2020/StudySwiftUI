@@ -22,10 +22,10 @@ class WalkthroughViewModel: ObservableObject {
     ]
     
     func nextButton() {
-        if currentPage <= 2 {
+        if currentPage <= pageList.count - 2 {
             currentPage += 1
             print(currentPage)
-        } else {
+        } else if currentPage == pageList.count - 1 {
             //ここにmamakaruteのスタート画面への処理を書く
             print("もう押せません")
             print(pageList.count)
@@ -50,7 +50,7 @@ class WalkthroughViewModel: ObservableObject {
     }
     
     func toggleNextButtonText() {
-        if currentPage == 3 {
+        if currentPage == pageList.count - 1 {
             nextButtonTextChange = true
         } else {
             nextButtonTextChange = false
