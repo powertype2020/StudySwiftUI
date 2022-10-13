@@ -27,6 +27,7 @@ struct HomeView: View {
     
     var body: some View {
         SerchMusicView()
+            .background(Color.red)
     }
 }
 

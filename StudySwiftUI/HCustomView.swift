@@ -30,19 +30,18 @@ struct ProgressView: View {
 struct ResultListView: View {
     
     @ObservedObject var viewModel = SerchMusicViewModel()
-    let musicData: MusicData
+    @State var musics = [MusicData]()
     
     var body: some View {
-        List {
+        List(musics, id: \.trackId) { music in
             HStack {
-                AsyncImage(url: musicData.artworkUrl100) { image in
-                    
+                AsyncImage(url: music.artworkUrl100) { image in
                 } placeholder: {
                     ProgressView()
                 }
                 VStack {
-                    Text(musicData.artistName)
-                    Text(musicData.trackName)
+                    Text(music.artistName)
+                    Text(music.trackName)
                 }
             }
         }
@@ -56,13 +55,25 @@ struct SerchMusicView: View {
     var body: some View {
         VStack {
             HStack {
+                Spacer()
                 SerchTextFieldView()
+                    .frame(width: 200.0, height: 40.0)
+                    .background(Color.white)
                 SerchButtonView()
+                    .frame(width: 40.0, height: 40.0)
+                    .foregroundColor(Color.blue)
+                Spacer()
             }
-            ForEach(viewModel.musics, id: \.artistId) { music in
-                ResultListView(musicData: music)
-            }
-            .onAppear(perform: viewModel.fetchMusic)
+            .padding(.top, 20.0)
+            ResultListView()
+            Spacer()
         }
+    }
+}
+
+struct SerchMusicView_Previews: PreviewProvider {
+    static let viewModel = WalkthroughViewModel()
+    static var previews: some View {
+        SerchMusicView()
     }
 }

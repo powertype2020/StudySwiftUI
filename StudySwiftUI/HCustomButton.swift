@@ -10,10 +10,14 @@ import SwiftUI
 
 struct SerchButtonView: View {
     
+    @ObservedObject var viewModel = SerchMusicViewModel()
+    
     var body: some View {
         
         Button(action: {
-            
+            Task {
+                await viewModel.fetchMusic()
+            }
         }) {
             Image(systemName: "magnifyingglass")
                 .font(.system(size: 30))

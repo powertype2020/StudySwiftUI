@@ -18,7 +18,7 @@ struct WTModel: Identifiable, Hashable {
 
 struct MusicData: Codable {
     
-    let artistId: Int
+    let trackId: Int
     let artistName: String
     let collectionName: String
     let trackName: String

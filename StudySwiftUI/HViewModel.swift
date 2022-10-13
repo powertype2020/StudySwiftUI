@@ -12,29 +12,19 @@ class SerchMusicViewModel: ObservableObject {
     @Published var serchText = ""
     @Published var musics: [MusicData] = []
     
-    func fetchMusic() {
-        let itunesUrlString = "https://itunes.apple.com/search?term=\(serchText)&media=music&entity=music&country=jp&lang=ja_jp&limit=10"
-        if let url = URL(string: itunesUrlString) {
-            URLSession
-                .shared
-                .dataTask(with: url) { [weak self] data, response, error in
-                    
-                    if let error = error {
-                        
-                    } else {
-                        let decoder = JSONDecoder()
-                        decoder.keyDecodingStrategy = .convertFromSnakeCase
-                        
-                        if let data = data,
-                           let musics = try? decoder.decode([MusicData].self, from: data) {
-                            self?.musics = musics
-                        } else {
-                            
-                        }
-                    }
-                }.resume()
+    func fetchMusic() async {
+        guard let url = URL(string: "https://itunes.apple.com/search?term=エミネム&media=music&entity=musicTrack&country=jp&lang=ja_jp&limit=10") else {
+            print("取得に失敗")
+            return
         }
-        
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            
+            if let decodedResponse = try? JSONDecoder().decode([MusicData].self, from: data) {
+                musics = decodedResponse
+            }
+        } catch {
+            print("デコードに失敗")
+        }
     }
-    
 }
