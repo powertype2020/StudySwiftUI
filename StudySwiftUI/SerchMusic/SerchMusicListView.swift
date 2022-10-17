@@ -1,5 +1,5 @@
 //
-//  SMView.swift
+//  SerchMusicView.swift
 //  StudySwiftUI
 //
 //  Created by 武久　直幹 on 2022/10/17.
@@ -10,16 +10,13 @@ import SwiftUI
 
 struct SerchMusicListView: View {
     
+    @ObservedObject var viewModel = SerchMusicViewModel()
+    
     var body: some View {
         VStack {
             HStack {
-                DismissButton()
                 Spacer()
-            }
-            HStack {
-                Spacer()
-                SerchTextField()
-                SerchButton()
+                SerchTextField(delegate: viewModel)
                 Spacer()
             }
             MusicList()

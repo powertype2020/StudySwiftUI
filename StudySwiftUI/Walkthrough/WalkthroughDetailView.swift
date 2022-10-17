@@ -16,8 +16,18 @@ struct WalkthroughDetailView: View {
     var body: some View {
         Spacer()
         HStack {
-            BackButtonView(viewModel: viewModel)
-                .padding(.leading, 20.0)
+            Button(action: {
+                viewModel.backButton()
+            }) {
+                HStack {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 30))
+                    Text("前のページへ戻る")
+                }
+            }
+            .frame(width: 200.0, height: 30.0)
+            .disabled(!viewModel.backButtonEnable)
+            .padding(.leading, 20.0)
             Spacer()
         }
         Spacer()

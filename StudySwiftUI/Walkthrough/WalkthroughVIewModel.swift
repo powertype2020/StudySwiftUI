@@ -13,12 +13,13 @@ class WalkthroughViewModel: ObservableObject {
     @Published var currentPage = 0
     @Published var backButtonEnable = false
     @Published var nextButtonTextChange = false
+    @Published var nextSerchMusic = false
     
     let pageList = [
-        Model(id: 0, title: "はじめまして！", text: "このアプリは、あなたやお子さまの健康を考えるアプリです！", imageString: "first"),
-        Model(id: 1, title: "健康管理", text: "病気になりがちな現代、体温や体調などを記録することは大事です。", imageString: "second"),
-        Model(id: 2, title: "最初はヘルプ！", text: "まずはじめに、カレンダー画面の左下にあるHelpを確認しよう！", imageString: "third"),
-        Model(id: 3, title: "Start!", text: "使い方は自由です！さあ、始めましょう！", imageString: "mamakarute")
+        WalkthroughModel(id: 0, title: "はじめまして！", text: "このアプリは、あなたやお子さまの健康を考えるアプリです！", imageString: "first"),
+        WalkthroughModel(id: 1, title: "健康管理", text: "病気になりがちな現代、体温や体調などを記録することは大事です。", imageString: "second"),
+        WalkthroughModel(id: 2, title: "最初はヘルプ！", text: "まずはじめに、カレンダー画面の左下にあるHelpを確認しよう！", imageString: "third"),
+        WalkthroughModel(id: 3, title: "Start!", text: "使い方は自由です！さあ、始めましょう！", imageString: "mamakarute")
     ]
     
     func nextButton() {
@@ -26,7 +27,7 @@ class WalkthroughViewModel: ObservableObject {
             currentPage += 1
             print(currentPage)
         } else if currentPage == pageList.count - 1 {
-            //ここにmamakaruteのスタート画面への処理を書く
+            nextSerchMusic = true
             print("もう押せません")
             print(pageList.count)
         }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Model: Identifiable, Hashable {
+struct WalkthroughModel: Identifiable, Hashable {
     
     let id: Int
     let title: String
