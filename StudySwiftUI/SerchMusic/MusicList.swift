@@ -8,17 +8,6 @@
 import Foundation
 import SwiftUI
 
-struct SerchTextField: View {
-    
-    @State var name = ""
-    
-    var body: some View {
-        TextField("アーティスト、曲名", text: $name)
-            .frame(width: 200.0, height: 40.0)
-            .background(Color.white)
-            .cornerRadius(10)
-    }
-}
 
 struct MusicList: View {
     
@@ -30,7 +19,14 @@ struct MusicList: View {
                         Image("first")
                             .resizable()
                             .frame(width: 150.0, height: 150.0)
-                        PlayButton()
+                        Button(action: {
+                            
+                        }) {
+                            Image(systemName: "play.fill")
+                                .font(.system(size: 100))
+                        }
+                        .frame(width: 130.0, height: 130.0)
+                        .foregroundColor(Color.white)
                     }
                     Spacer()
                     VStack {

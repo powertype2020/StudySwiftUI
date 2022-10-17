@@ -16,8 +16,17 @@ struct WalkthroughView: View {
         VStack {
             WalkthroughDetailView(viewModel: viewModel)
             Spacer()
-            NextButtonView(viewModel: viewModel)
-                .padding(.bottom)
+            Button("\(viewModel.nextButtonTextChange ? "スタート！": "次へ")") {
+                viewModel.nextButton()
+            }
+            .sheet(isPresented: self.$viewModel.nextSerchMusic) {
+                SerchMusicListView()
+            }
+            .frame(width: 300.0, height: 50.0)
+            .background(Color.blue)
+            .foregroundColor(Color.white)
+            .cornerRadius(50)
+            .padding(.bottom)
         }
         .background(Color.pink)
     }
