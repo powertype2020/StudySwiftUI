@@ -46,7 +46,8 @@ class WalkthroughViewModel: ObservableObject {
     }
     
     func toggleNextButtonText() {
-        let islastPageOrMore = currentPage > 2
+        let secondLastPageIndex = pageList.count - 2
+        let islastPageOrMore = currentPage > secondLastPageIndex
         nextButtonTextChange = islastPageOrMore
         }
 }
