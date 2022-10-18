@@ -23,38 +23,30 @@ class WalkthroughViewModel: ObservableObject {
     ]
     
     func nextButton() {
-        if currentPage <= pageList.count - 2 {
-            currentPage += 1
-            print(currentPage)
-        } else if currentPage == pageList.count - 1 {
+        let lastPageIndex = pageList.count - 1
+        guard currentPage < lastPageIndex else {
             nextSerchMusic = true
-            print("もう押せません")
-            print(pageList.count)
+            return
         }
+        currentPage += 1
+        print(currentPage)
     }
     
     func backButton() {
-        if currentPage >= 1 {
-            currentPage -= 1
-            print(currentPage)
-        } else {
-            print("もう押せません")
+        guard currentPage >= 1 else {
+            return
         }
+        currentPage -= 1
+        print(currentPage)
     }
     
     func toggleBackButton() {
-        if currentPage >= 1 {
-            backButtonEnable = true
-        } else {
-            backButtonEnable = false
-        }
+        let isFirstPageOrMore = currentPage >= 1
+        backButtonEnable = isFirstPageOrMore
     }
     
     func toggleNextButtonText() {
-        if currentPage == pageList.count - 1 {
-            nextButtonTextChange = true
-        } else {
-            nextButtonTextChange = false
-        }
+        let islastPageOrMore = currentPage > 2
+        nextButtonTextChange = islastPageOrMore
     }
 }
