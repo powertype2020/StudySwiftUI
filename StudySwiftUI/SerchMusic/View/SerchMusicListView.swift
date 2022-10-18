@@ -16,7 +16,7 @@ struct SerchMusicListView: View {
         VStack {
             HStack {
                 Spacer()
-                SerchTextField(delegate: viewModel)
+                SerchTextField()
                 Spacer()
             }
             MusicList()

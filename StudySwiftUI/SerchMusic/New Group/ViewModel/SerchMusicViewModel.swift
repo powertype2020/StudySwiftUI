@@ -6,14 +6,30 @@
 //
 
 import Foundation
+import Combine
 
-class SerchMusicViewModel: ObservableObject, MyProtocol {
+class SerchMusicViewModel: ObservableObject {
     
     @Published var results = [Results]()
     @Published var serchText = ""
+    @Published var inputText = CurrentValueSubject<String, Never>("")
     
-    func fetchMusic() {
-        guard let url = URL(string: "https://itunes.apple.com/search?term=Eminem&entity=song") else {
+    private var subscriptions = Set<AnyCancellable>()
+    
+    init() {
+        $serchText
+            .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+            .dropFirst()
+            .sink { [weak self] text in
+                self?.fetchMusic(for: text)
+        }.store(in: &subscriptions)
+    }
+    
+    
+    func fetchMusic(for serchText: String) {
+        let serchTextUrlString = "https://itunes.apple.com/search?term=\(serchText)&entity=song&limit=5"
+        print(serchTextUrlString)
+        guard let url = URL(string: serchTextUrlString) else {
             print("取得に失敗")
             return
         }

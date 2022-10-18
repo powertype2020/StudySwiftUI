@@ -13,6 +13,7 @@ struct MusicList: View {
     @ObservedObject var viewModel = SerchMusicViewModel()
     
     var body: some View {
+        NavigationView {
         List(viewModel.results, id:\.trackId) { item in
             HStack {
                 ZStack {
@@ -50,8 +51,8 @@ struct MusicList: View {
                 Spacer()
             }
         }
-        .onAppear() {
-            viewModel.fetchMusic()
+        .searchable(text: $viewModel.serchText)
+        .navigationTitle("曲検索")
         }
     }
 }
