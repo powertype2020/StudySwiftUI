@@ -10,7 +10,8 @@ import SwiftUI
 
 struct SerchMusicListView: View {
     
-    @State var name = ""
+    @State private var name = ""
+    //まだViewModelは作成していないので初期値を実装、ViewModel実装後削除
     
     var body: some View {
         VStack {

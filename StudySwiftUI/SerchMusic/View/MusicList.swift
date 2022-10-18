@@ -19,14 +19,7 @@ struct MusicList: View {
                         Image("first")
                             .resizable()
                             .frame(width: 150.0, height: 150.0)
-                        Button(action: {
-                            
-                        }) {
-                            Image(systemName: "play.fill")
-                                .font(.system(size: 100))
-                        }
-                        .frame(width: 130.0, height: 130.0)
-                        .foregroundColor(Color.white)
+                        musicPlayButton
                     }
                     Spacer()
                     VStack {
@@ -45,5 +38,16 @@ struct MusicList: View {
                 }
             }
         }
+    }
+    
+    private var musicPlayButton: some View {
+        Button(action: {
+            
+        }) {
+            Image(systemName: "play.fill")
+                .font(.system(size: 100))
+        }
+        .frame(width: 130.0, height: 130.0)
+        .foregroundColor(Color.white)
     }
 }
