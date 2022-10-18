@@ -32,7 +32,6 @@ struct WalkthroughView: View {
     }
 }
 
-
 struct WalkthroughView_Previews: PreviewProvider {
     static let viewModel = WalkthroughViewModel()
     static var previews: some View {

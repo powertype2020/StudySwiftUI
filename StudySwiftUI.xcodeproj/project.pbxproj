@@ -84,10 +84,9 @@
 		6D354EB428FD176A00A1F194 /* Walkthrough */ = {
 			isa = PBXGroup;
 			children = (
-				6D4A6D9828E6CC550032C20D /* WalkthroughDetailView.swift */,
-				6DE2F4E428E416130080BF92 /* WalkthroughModel.swift */,
-				6D4A6D9428E6B4910032C20D /* WalkthroughView.swift */,
-				6DE2F4E228E4134D0080BF92 /* WalkthroughVIewModel.swift */,
+				6D354EC228FE7B3A00A1F194 /* ViewModel */,
+				6D354EC128FE7B2600A1F194 /* View */,
+				6D354EC028FE7B0F00A1F194 /* Model */,
 			);
 			path = Walkthrough;
 			sourceTree = "<group>";
@@ -95,10 +94,59 @@
 		6D354EB528FD185100A1F194 /* SerchMusic */ = {
 			isa = PBXGroup;
 			children = (
-				6D59986528FB3AFB002FEA14 /* MusicList.swift */,
-				6D354EB828FD1F0300A1F194 /* SerchMusicListView.swift */,
+				6D354EC528FE7B5A00A1F194 /* ViewModel */,
+				6D354EC428FE7B5300A1F194 /* View */,
+				6D354EC328FE7B4800A1F194 /* Model */,
 			);
 			path = SerchMusic;
+			sourceTree = "<group>";
+		};
+		6D354EC028FE7B0F00A1F194 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6DE2F4E428E416130080BF92 /* WalkthroughModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6D354EC128FE7B2600A1F194 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6D4A6D9428E6B4910032C20D /* WalkthroughView.swift */,
+				6D4A6D9828E6CC550032C20D /* WalkthroughDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6D354EC228FE7B3A00A1F194 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6DE2F4E228E4134D0080BF92 /* WalkthroughVIewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6D354EC328FE7B4800A1F194 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6D354EC428FE7B5300A1F194 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6D354EB828FD1F0300A1F194 /* SerchMusicListView.swift */,
+				6D59986528FB3AFB002FEA14 /* MusicList.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6D354EC528FE7B5A00A1F194 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		6DF1101028E288E0006A796F = {
