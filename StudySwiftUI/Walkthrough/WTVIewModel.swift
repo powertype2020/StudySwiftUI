@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  VIewModel.swift
 //  StudySwiftUI
 //
 //  Created by 武久　直幹 on 2022/09/28.
@@ -13,7 +13,6 @@ class WalkthroughViewModel: ObservableObject {
     @Published var currentPage = 0
     @Published var backButtonEnable = false
     @Published var nextButtonTextChange = false
-    @Published var nextSerchMusic = false
     
     let pageList = [
         WalkthroughModel(id: 0, title: "はじめまして！", text: "このアプリは、あなたやお子さまの健康を考えるアプリです！", imageString: "first"),
@@ -23,31 +22,38 @@ class WalkthroughViewModel: ObservableObject {
     ]
     
     func nextButton() {
-        let lastPageIndex = pageList.count - 1
-        guard currentPage < lastPageIndex else {
-            nextSerchMusic = true
-            return
+        if currentPage <= pageList.count - 2 {
+            currentPage += 1
+            print(currentPage)
+        } else if currentPage == pageList.count - 1 {
+            //ここにmamakaruteのスタート画面への処理を書く
+            print("もう押せません")
+            print(pageList.count)
         }
-        currentPage += 1
-        print(currentPage)
     }
     
     func backButton() {
-        guard currentPage >= 1 else {
-            return
+        if currentPage >= 1 {
+            currentPage -= 1
+            print(currentPage)
+        } else {
+            print("もう押せません")
         }
-        currentPage -= 1
-        print(currentPage)
     }
     
     func toggleBackButton() {
-        let isFirstPageOrMore = currentPage >= 1
-        backButtonEnable = isFirstPageOrMore
+        if currentPage >= 1 {
+            backButtonEnable = true
+        } else {
+            backButtonEnable = false
+        }
     }
     
     func toggleNextButtonText() {
-        let secondLastPageIndex = pageList.count - 2
-        let islastPageOrMore = currentPage > secondLastPageIndex
-        nextButtonTextChange = islastPageOrMore
+        if currentPage == pageList.count - 1 {
+            nextButtonTextChange = true
+        } else {
+            nextButtonTextChange = false
         }
+    }
 }

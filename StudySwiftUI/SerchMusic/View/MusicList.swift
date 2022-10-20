@@ -1,68 +1,53 @@
 //
-//  MusicList.swift
+//  SerchMusicCustomView.swift
 //  StudySwiftUI
 //
-//  Created by 武久　直幹 on 2022/10/17.
+//  Created by 武久　直幹 on 2022/10/16.
 //
 
 import Foundation
 import SwiftUI
 
+
 struct MusicList: View {
     
-    @ObservedObject var viewModel = SerchMusicViewModel()
-    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(viewModel.results, id:\.trackId) { item in
-                    HStack {
-                        ZStack {
-                            AsyncImage(url: URL(string: item.artworkUrl100)) { image in
-                                image.resizable()
-                            } placeholder: {
-                                ProgressView()
-                                    .progressViewStyle(.circular)
-                            }
-                            .frame(width: 120.0, height: 120.0)
-                            Button(action: {
-                                
-                            }) {
-                                Image(systemName: "play.fill")
-                                    .font(.system(size: 80))
-                            }
-                            .frame(width: 100.0, height: 100.0)
-                            .foregroundColor(Color.white)
-                        }
+        List {
+            ForEach(0..<5) {_ in
+                HStack {
+                    ZStack {
+                        Image("first")
+                            .resizable()
+                            .frame(width: 150.0, height: 150.0)
+                        musicPlayButton
+                    }
+                    Spacer()
+                    VStack {
+                        Text("曲名")
+                            .font(.title)
+                            .multilineTextAlignment(.center)
                         Spacer()
-                        VStack {
-                            Text(item.trackName)
-                                .font(.headline)
-                                .foregroundColor(Color.black)
-                                .multilineTextAlignment(.center)
-                            Spacer()
-                            Text(item.collectionName)
-                                .font(.subheadline)
-                                .foregroundColor(Color.black)
-                                .multilineTextAlignment(.center)
-                            Text(item.artistName)
-                                .font(.footnote)
-                                .foregroundColor(Color.black)
-                                .multilineTextAlignment(.center)
-                        }
+                        Text("アルバム名")
+                            .font(.headline)
+                            .multilineTextAlignment(.center)
+                        Text("アーティスト名")
+                            .font(.subheadline)
+                            .multilineTextAlignment(.center)
                     }
+                    Spacer()
                 }
-                ProgressView()
-                    .progressViewStyle(.circular)
-                Color
-                    .gray
-                    .frame(height: 50)
-                    .onAppear {
-                        viewModel.loadMore()
-                    }
             }
-            .searchable(text: $viewModel.serchText)
-            .navigationTitle("曲検索")
         }
+    }
+    
+    private var musicPlayButton: some View {
+        Button(action: {
+            
+        }) {
+            Image(systemName: "play.fill")
+                .font(.system(size: 100))
+        }
+        .frame(width: 130.0, height: 130.0)
+        .foregroundColor(Color.white)
     }
 }

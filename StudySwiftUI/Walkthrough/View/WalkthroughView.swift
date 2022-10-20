@@ -18,7 +18,12 @@ struct WalkthroughView: View {
             Spacer()
             Button("\(viewModel.nextButtonTextChange ? "スタート！": "次へ")") {
                 viewModel.nextButton()
+<<<<<<< HEAD:StudySwiftUI/Walkthrough/View/WalkthroughView.swift
             }.sheet(isPresented: $viewModel.nextSerchMusic) {
+=======
+            }
+            .sheet(isPresented: self.$viewModel.nextSerchMusic) {
+>>>>>>> main:StudySwiftUI/Walkthrough/WTView.swift
                 SerchMusicListView()
             }
             .frame(width: 300.0, height: 50.0)
@@ -30,7 +35,6 @@ struct WalkthroughView: View {
         .background(Color.pink)
     }
 }
-
 
 struct WalkthroughView_Previews: PreviewProvider {
     static let viewModel = WalkthroughViewModel()
