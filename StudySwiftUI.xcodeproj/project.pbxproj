@@ -11,7 +11,7 @@
 		6D4A6D9528E6B4910032C20D /* WalkthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A6D9428E6B4910032C20D /* WalkthroughView.swift */; };
 		6D4A6D9928E6CC550032C20D /* WalkthroughDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A6D9828E6CC550032C20D /* WalkthroughDetailView.swift */; };
 		6D59986628FB3AFB002FEA14 /* MusicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59986528FB3AFB002FEA14 /* MusicList.swift */; };
-		6DE2F4E328E4134D0080BF92 /* WalkthroughVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE2F4E228E4134D0080BF92 /* WalkthroughVIewModel.swift */; };
+		6DE2F4E328E4134D0080BF92 /* WalkthroughViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE2F4E228E4134D0080BF92 /* WalkthroughViewModel.swift */; };
 		6DE2F4E528E416130080BF92 /* WalkthroughModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE2F4E428E416130080BF92 /* WalkthroughModel.swift */; };
 		6DF1101D28E288E1006A796F /* StudySwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF1101C28E288E1006A796F /* StudySwiftUIApp.swift */; };
 		6DF1102128E288E2006A796F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DF1102028E288E2006A796F /* Assets.xcassets */; };
@@ -43,7 +43,7 @@
 		6D4A6D9428E6B4910032C20D /* WalkthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughView.swift; sourceTree = "<group>"; };
 		6D4A6D9828E6CC550032C20D /* WalkthroughDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughDetailView.swift; sourceTree = "<group>"; };
 		6D59986528FB3AFB002FEA14 /* MusicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicList.swift; sourceTree = "<group>"; };
-		6DE2F4E228E4134D0080BF92 /* WalkthroughVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughVIewModel.swift; sourceTree = "<group>"; };
+		6DE2F4E228E4134D0080BF92 /* WalkthroughViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewModel.swift; sourceTree = "<group>"; };
 		6DE2F4E428E416130080BF92 /* WalkthroughModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughModel.swift; sourceTree = "<group>"; };
 		6DF1101928E288E0006A796F /* StudySwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudySwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF1101C28E288E1006A796F /* StudySwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySwiftUIApp.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		6D354EC228FE7B3A00A1F194 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				6DE2F4E228E4134D0080BF92 /* WalkthroughVIewModel.swift */,
+				6DE2F4E228E4134D0080BF92 /* WalkthroughViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -338,7 +338,7 @@
 			files = (
 				6D4A6D9528E6B4910032C20D /* WalkthroughView.swift in Sources */,
 				6D354EB928FD1F0300A1F194 /* SerchMusicListView.swift in Sources */,
-				6DE2F4E328E4134D0080BF92 /* WalkthroughVIewModel.swift in Sources */,
+				6DE2F4E328E4134D0080BF92 /* WalkthroughViewModel.swift in Sources */,
 				6D59986628FB3AFB002FEA14 /* MusicList.swift in Sources */,
 				6D4A6D9928E6CC550032C20D /* WalkthroughDetailView.swift in Sources */,
 				6DF1101D28E288E1006A796F /* StudySwiftUIApp.swift in Sources */,
