@@ -14,54 +14,55 @@ struct MusicList: View {
     
     var body: some View {
         NavigationView {
-        List(viewModel.results, id:\.trackId) { item in
-            HStack {
-                ZStack {
-                    AsyncImage(url: URL(string: item.artworkUrl100)) { image in
-                        image.resizable()
-                    } placeholder: {
-                        ProgressView()
+            List {
+                ForEach(viewModel.results, id:\.trackId) { item in
+                    HStack {
+                        ZStack {
+                            AsyncImage(url: URL(string: item.artworkUrl100)) { image in
+                                image.resizable()
+                            } placeholder: {
+                                ProgressView()
+                                    .progressViewStyle(.circular)
+                            }
+                            .frame(width: 120.0, height: 120.0)
+                            Button(action: {
+                                
+                            }) {
+                                Image(systemName: "play.fill")
+                                    .font(.system(size: 80))
+                            }
+                            .frame(width: 100.0, height: 100.0)
+                            .foregroundColor(Color.white)
+                        }
+                        Spacer()
+                        VStack {
+                            Text(item.trackName)
+                                .font(.headline)
+                                .foregroundColor(Color.black)
+                                .multilineTextAlignment(.center)
+                            Spacer()
+                            Text(item.collectionName)
+                                .font(.subheadline)
+                                .foregroundColor(Color.black)
+                                .multilineTextAlignment(.center)
+                            Text(item.artistName)
+                                .font(.footnote)
+                                .foregroundColor(Color.black)
+                                .multilineTextAlignment(.center)
+                        }
                     }
-                    .frame(width: 120.0, height: 120.0)
-                    Button(action: {
-                        
-                    }) {
-                        Image(systemName: "play.fill")
-                            .font(.system(size: 80))
+                }
+                ProgressView()
+                    .progressViewStyle(.circular)
+                Color
+                    .gray
+                    .frame(height: 50)
+                    .onAppear {
+                        viewModel.loadMore()
                     }
-                    .frame(width: 100.0, height: 100.0)
-                    .foregroundColor(Color.white)
-                }
-                Spacer()
-                VStack {
-                    Text(item.trackName)
-                        .font(.headline)
-                        .foregroundColor(Color.black)
-                        .multilineTextAlignment(.center)
-                    Spacer()
-                    Text(item.collectionName)
-                        .font(.subheadline)
-                        .foregroundColor(Color.black)
-                        .multilineTextAlignment(.center)
-                    Text(item.artistName)
-                        .font(.footnote)
-                        .foregroundColor(Color.black)
-                        .multilineTextAlignment(.center)
-                }
-                Spacer()
             }
+            .searchable(text: $viewModel.serchText)
+            .navigationTitle("曲検索")
         }
-        .searchable(text: $viewModel.serchText)
-        .navigationTitle("曲検索")
-        }
-    }
-}
-
-struct ProgressView: View {
-    
-    var body: some View {
-        Image("first")
-            .resizable()
-            .frame(width: 120.0, height: 120.0)
     }
 }

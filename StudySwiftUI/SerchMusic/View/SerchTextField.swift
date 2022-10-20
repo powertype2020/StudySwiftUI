@@ -27,7 +27,7 @@ struct SerchTextField: View {
                 Spacer()
             }
             HStack {
-                TextField("アーティスト、曲名", text: $viewModel.inputText.value)
+                TextField("アーティスト、曲名", text: $viewModel.serchText)
                     .onAppear {
                         
                     }
