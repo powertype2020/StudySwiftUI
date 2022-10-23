@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D0544B22901450B0014B9A8 /* iTunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0544B12901450B0014B9A8 /* iTunesAPI.swift */; };
 		6D354EB928FD1F0300A1F194 /* SerchMusicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D354EB828FD1F0300A1F194 /* SerchMusicListView.swift */; };
 		6D354EBB28FD24B200A1F194 /* SerchMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D354EBA28FD24B200A1F194 /* SerchMusicModel.swift */; };
 		6D354EBD28FD24C400A1F194 /* SerchMusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D354EBC28FD24C400A1F194 /* SerchMusicViewModel.swift */; };
 		6D354EBF28FD715200A1F194 /* MusicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D354EBE28FD715200A1F194 /* MusicList.swift */; };
 		6D4A6D9528E6B4910032C20D /* WalkthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A6D9428E6B4910032C20D /* WalkthroughView.swift */; };
 		6D4A6D9928E6CC550032C20D /* WalkthroughDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A6D9828E6CC550032C20D /* WalkthroughDetailView.swift */; };
+		6D4CA68129052E62001524D6 /* GenericAPIMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4CA68029052E62001524D6 /* GenericAPIMethod.swift */; };
 		6D59986628FB3AFB002FEA14 /* SerchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59986528FB3AFB002FEA14 /* SerchTextField.swift */; };
 		6D9FCAE928FFD06E00356C55 /* APIErrorHandring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9FCAE828FFD06E00356C55 /* APIErrorHandring.swift */; };
 		6DE2F4E328E4134D0080BF92 /* WalkthroughViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE2F4E228E4134D0080BF92 /* WalkthroughViewModel.swift */; };
@@ -43,12 +45,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D0544B12901450B0014B9A8 /* iTunesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPI.swift; sourceTree = "<group>"; };
 		6D354EB828FD1F0300A1F194 /* SerchMusicListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerchMusicListView.swift; sourceTree = "<group>"; };
 		6D354EBA28FD24B200A1F194 /* SerchMusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerchMusicModel.swift; sourceTree = "<group>"; };
 		6D354EBC28FD24C400A1F194 /* SerchMusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerchMusicViewModel.swift; sourceTree = "<group>"; };
 		6D354EBE28FD715200A1F194 /* MusicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicList.swift; sourceTree = "<group>"; };
 		6D4A6D9428E6B4910032C20D /* WalkthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughView.swift; sourceTree = "<group>"; };
 		6D4A6D9828E6CC550032C20D /* WalkthroughDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughDetailView.swift; sourceTree = "<group>"; };
+		6D4CA68029052E62001524D6 /* GenericAPIMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAPIMethod.swift; sourceTree = "<group>"; };
 		6D59986528FB3AFB002FEA14 /* SerchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerchTextField.swift; sourceTree = "<group>"; };
 		6D9FCAE828FFD06E00356C55 /* APIErrorHandring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorHandring.swift; sourceTree = "<group>"; };
 		6DE2F4E228E4134D0080BF92 /* WalkthroughViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewModel.swift; sourceTree = "<group>"; };
@@ -89,6 +93,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D0544B0290144DB0014B9A8 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				6D0544B12901450B0014B9A8 /* iTunesAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		6D354EB428FD176A00A1F194 /* Walkthrough */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +114,7 @@
 		6D354EB528FD185100A1F194 /* SerchMusic */ = {
 			isa = PBXGroup;
 			children = (
+				6D0544B0290144DB0014B9A8 /* API */,
 				6D9FCAE728FFD03500356C55 /* ErrorHandring */,
 				6D354ECA28FE8A1600A1F194 /* Model */,
 				6D354ECB28FE8A1D00A1F194 /* View */,
@@ -158,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				6D354EBC28FD24C400A1F194 /* SerchMusicViewModel.swift */,
+				6D4CA68029052E62001524D6 /* GenericAPIMethod.swift */,
 			);
 			name = ViewModel;
 			path = "New Group/ViewModel";
@@ -358,6 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D0544B22901450B0014B9A8 /* iTunesAPI.swift in Sources */,
 				6D4A6D9528E6B4910032C20D /* WalkthroughView.swift in Sources */,
 				6D9FCAE928FFD06E00356C55 /* APIErrorHandring.swift in Sources */,
 				6D354EB928FD1F0300A1F194 /* SerchMusicListView.swift in Sources */,
@@ -369,6 +384,7 @@
 				6D354EBF28FD715200A1F194 /* MusicList.swift in Sources */,
 				6DE2F4E528E416130080BF92 /* WalkthroughModel.swift in Sources */,
 				6D354EBB28FD24B200A1F194 /* SerchMusicModel.swift in Sources */,
+				6D4CA68129052E62001524D6 /* GenericAPIMethod.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

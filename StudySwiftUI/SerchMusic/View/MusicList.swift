@@ -14,55 +14,68 @@ struct MusicList: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(viewModel.results, id:\.trackId) { item in
-                    HStack {
-                        ZStack {
-                            AsyncImage(url: URL(string: item.artworkUrl100)) { image in
-                                image.resizable()
-                            } placeholder: {
-                                ProgressView()
-                                    .progressViewStyle(.circular)
-                            }
-                            .frame(width: 120.0, height: 120.0)
-                            Button(action: {
-                                
-                            }) {
-                                Image(systemName: "play.fill")
-                                    .font(.system(size: 80))
-                            }
-                            .frame(width: 100.0, height: 100.0)
-                            .foregroundColor(Color.white)
-                        }
-                        Spacer()
-                        VStack {
-                            Text(item.trackName)
-                                .font(.headline)
-                                .foregroundColor(Color.black)
-                                .multilineTextAlignment(.center)
-                            Spacer()
-                            Text(item.collectionName)
-                                .font(.subheadline)
-                                .foregroundColor(Color.black)
-                                .multilineTextAlignment(.center)
-                            Text(item.artistName)
-                                .font(.footnote)
-                                .foregroundColor(Color.black)
-                                .multilineTextAlignment(.center)
-                        }
-                    }
+            VStack {
+                switch viewModel.state {
+                case .good:
+                    Text("検索結果:\(viewModel.serchText)")
+                case .isLoading:
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                case .loadedAll:
+                    Text("検索結果: Empty")
+                case .error(let message):
+                    Text(message)
+                        .foregroundColor(Color.red)
                 }
-                ProgressView()
-                    .progressViewStyle(.circular)
-                Color
-                    .gray
-                    .frame(height: 50)
-                    .onAppear {
-                        viewModel.loadMore()
+                List {
+                    ForEach(viewModel.results, id:\.trackId) { item in
+                        HStack {
+                            ZStack {
+                                AsyncImage(url: URL(string: item.artworkUrl100)) { image in
+                                    image.resizable()
+                                } placeholder: {
+                                    ProgressView()
+                                        .progressViewStyle(.circular)
+                                }
+                                .frame(width: 120.0, height: 120.0)
+                                Button(action: {
+                                    
+                                }) {
+                                    Image(systemName: "play.fill")
+                                        .font(.system(size: 80))
+                                }
+                                .frame(width: 100.0, height: 100.0)
+                                .foregroundColor(Color.white)
+                            }
+                            Spacer()
+                            VStack {
+                                Text(item.trackName)
+                                    .font(.headline)
+                                    .foregroundColor(Color.black)
+                                    .multilineTextAlignment(.center)
+                                Spacer()
+                                Text(item.collectionName)
+                                    .font(.subheadline)
+                                    .foregroundColor(Color.black)
+                                    .multilineTextAlignment(.center)
+                                Text(item.artistName)
+                                    .font(.footnote)
+                                    .foregroundColor(Color.black)
+                                    .multilineTextAlignment(.center)
+                            }
+                        }
                     }
+                    .listStyle(.plain)
+                    .searchable(text: $viewModel.serchText)
+                    .navigationTitle("曲検索")
+                    Color.clear
+                        .onAppear {
+                            viewModel.loadMore()
+                            NetworkManeger().fetchTodo()
+                        }
+                        
+                }
             }
-            .searchable(text: $viewModel.serchText)
-            .navigationTitle("曲検索")
         }
     }
 }
