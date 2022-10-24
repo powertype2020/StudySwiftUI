@@ -36,7 +36,7 @@ struct SerchTextField: View {
                     .background(Color.white)
                     .cornerRadius(10)
                 Button(action: {
-                  
+                    
                 }) {
                     Image(systemName: "magnifyingglass")
                         .font(.system(size: 30))

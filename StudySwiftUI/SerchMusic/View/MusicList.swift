@@ -18,6 +18,7 @@ struct MusicList: View {
                 switch viewModel.state {
                 case .good:
                     Text("検索結果:\(viewModel.serchText)")
+                        .foregroundColor(Color.black)
                 case .isLoading:
                     ProgressView()
                         .progressViewStyle(.circular)
@@ -67,13 +68,12 @@ struct MusicList: View {
                     }
                     .listStyle(.plain)
                     .searchable(text: $viewModel.serchText)
+                    .foregroundColor(Color.black)
                     .navigationTitle("曲検索")
                     Color.clear
                         .onAppear {
                             viewModel.loadMore()
-                            NetworkManeger().fetchTodo()
                         }
-                        
                 }
             }
         }

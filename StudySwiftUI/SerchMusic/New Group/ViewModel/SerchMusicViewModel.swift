@@ -19,6 +19,7 @@ class SerchMusicViewModel: ObservableObject {
     
     @Published var results = [Results]()
     @Published var errorHandring = APIErrorHandring.self
+    @Published var genericAPIMethod = GenericAPIMethod()
     @Published var iTunesApi = iTunesAPI()
     @Published var state: State = .good {
         didSet {
@@ -38,15 +39,15 @@ class SerchMusicViewModel: ObservableObject {
             .sink { [weak self] text in
                 self?.state = .good
                 self?.results = []
-                self?.fetchMusic(for: text)
+                self?.fetchMusic()
             }.store(in: &subscriptions)
     }
     
     func loadMore() {
-        fetchMusic(for: serchText)
+        fetchMusic()
     }
     
-    func fetchMusic(for serchText: String) {
+    func fetchMusic() {
         
         guard !serchText.isEmpty else {
             return
@@ -56,37 +57,34 @@ class SerchMusicViewModel: ObservableObject {
             return
         }
         
-        guard let url = iTunesApi.createURL(for: serchText, limit: limit, offset: limit * page) else {
-            print("取得に失敗")
-            return
-        }
-        print("検索を開始しました　for: \(serchText)")
+        guard let requestURL = iTunesApi.createURL(for: serchText, limit: limit, offset: limit * page) else { return }
         state = .isLoading
-        let request = URLRequest(url: url)
-        URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-            if let error = error {
-            DispatchQueue.main.async {
-                self?.state = .error("ロード失敗")
-            }
-            
-            if let response = response as? HTTPURLResponse {
-                print("statusCode : \(response.statusCode)")
-            }
-            
-            } else if let musicData = data {
-                do {
-                    let decodedResponse = try JSONDecoder().decode(Response.self, from: musicData)
-                    DispatchQueue.main.async {
-                        for result in decodedResponse.results {
-                            self?.results.append(result)
-                        }
-                        self?.page += 1
-                        self?.state = (decodedResponse.results.count == self?.limit) ? .good : .loadedAll
+        genericAPIMethod.fetch(to: Response.self, for: requestURL, completion: { result in
+            switch(result) {
+            case let .success(json):
+                dump(json)
+                DispatchQueue.main.async {
+                    for result in json.results {
+                        self.results.append(result)
                     }
-                } catch {
-                    print("error: \(error)")
+                    self.page += 1
+                    self.state = (json.results.count == self.limit) ? .good : .loadedAll
+                }
+            case let .failure(error):
+                switch error {
+                case .invalidResponse:
+                    print("サーバーエラーです")
+                case .invalidData:
+                    print("データが無効です")
+                case .error:
+                    print("エラーです")
+                case .decodingError(err: _):
+                    print("デコードエラーです")
+                case .invalidUrl:
+                    print("URLが無効です")
                 }
             }
-        }.resume()
+        })
+        print(requestURL)
     }
 }
