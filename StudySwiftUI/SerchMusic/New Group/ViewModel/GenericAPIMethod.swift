@@ -9,7 +9,7 @@ import Foundation
 
 class GenericAPIMethod {
     
-    func fetch<T: Codable>(to dataClass: T.Type, for url: URL, completion: @escaping(Result<T, APIErrorHandring>) -> Void) {
+    func fetch<T: Codable>(to dataClass: T.Type, with url: URL, completion: @escaping(Result<T, APIError>) -> Void) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
                 print(String(describing: error!))

@@ -18,7 +18,7 @@ class SerchMusicViewModel: ObservableObject {
     }
     
     @Published var results = [Results]()
-    @Published var errorHandring = APIErrorHandring.self
+    @Published var errorHandring = APIError.self
     @Published var genericAPIMethod = GenericAPIMethod()
     @Published var iTunesApi = iTunesAPI()
     @Published var state: State = .good {
@@ -59,7 +59,7 @@ class SerchMusicViewModel: ObservableObject {
         
         guard let requestURL = iTunesApi.createURL(for: serchText, limit: limit, offset: limit * page) else { return }
         state = .isLoading
-        genericAPIMethod.fetch(to: Response.self, for: requestURL, completion: { result in
+        genericAPIMethod.fetch(to: Response.self, with: requestURL, completion: { result in
             switch(result) {
             case let .success(json):
                 dump(json)
