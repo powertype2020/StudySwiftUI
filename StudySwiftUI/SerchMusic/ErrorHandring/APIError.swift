@@ -10,8 +10,9 @@ import Foundation
 enum APIError: Error {
     
     case invalidUrl
-    case invalidResponse
+    case invalidResponse(Int)
     case invalidData
     case error(err: String)
     case decodingError(err: String)
+    
 }

@@ -72,14 +72,25 @@ class SerchMusicViewModel: ObservableObject {
                 }
             case let .failure(error):
                 switch error {
-                case .invalidResponse:
-                    print("サーバーエラーです")
+                case let .invalidResponse(statusCode):
+                    switch statusCode {
+                    case 400:
+                        print("statusCode \(statusCode): 構文無効であるためサーバーがリクエストを理解できません")
+                    case 403:
+                        print("statusCode \(statusCode): アクセス権がありません")
+                    case 404:
+                        print("statusCode \(statusCode): リソースが発見できません、URLが無効です")
+                    case 500:
+                        print("statusCode \(statusCode): サーバーが処理できませんでした")
+                    default:
+                        print("statusCode \(statusCode): その他のエラーです")
+                    }
                 case .invalidData:
                     print("データが無効です")
                 case .error:
-                    print("エラーです")
+                    print("エラーです: \(error.localizedDescription)")
                 case .decodingError(err: _):
-                    print("デコードエラーです")
+                    print("デコードエラーです: \(error.localizedDescription)")
                 case .invalidUrl:
                     print("URLが無効です")
                 }
