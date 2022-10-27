@@ -13,6 +13,17 @@ struct MusicList: View {
     @ObservedObject var viewModel = SerchMusicViewModel()
     
     var body: some View {
+        if(viewModel.toggleMiniPlayerMusicName) {
+            ZStack {
+                Color.white
+                    .cornerRadius(10)
+                    .frame(width: 300, height: 50)
+                Text("再生中: \(viewModel.previewMusicName)")
+                    .frame(width: 280, height: 45)
+                    .font(.subheadline)
+                    .foregroundColor(Color.black)
+            }
+        }
         NavigationView {
             VStack {
                 switch viewModel.state {
@@ -39,14 +50,17 @@ struct MusicList: View {
                                         .progressViewStyle(.circular)
                                 }
                                 .frame(width: 120.0, height: 120.0)
-                                Button(action: {
-                                    
-                                }) {
-                                    Image(systemName: "play.fill")
-                                        .font(.system(size: 80))
-                                }
-                                .frame(width: 100.0, height: 100.0)
-                                .foregroundColor(Color.white)
+                                Image(systemName:"\(viewModel.playImageChange ? "stop.circle" : "play.fill")")
+                                    .font(.system(size: 80))
+                                    .frame(width: 100.0, height: 100.0)
+                                    .foregroundColor(Color.white)
+                                    .onTapGesture {
+                                        guard viewModel.playImageChange == false else {
+                                            viewModel.stopMusic()
+                                            return
+                                        }
+                                        viewModel.startPlayMusic(withUrl: item.previewUrl, withName: item.trackName)
+                                    }
                             }
                             Spacer()
                             VStack {
@@ -66,15 +80,15 @@ struct MusicList: View {
                             }
                         }
                     }
-                    .listStyle(.plain)
-                    .searchable(text: $viewModel.serchText)
-                    .foregroundColor(Color.black)
-                    .navigationTitle("曲検索")
                     Color.clear
                         .onAppear {
                             viewModel.loadMore()
                         }
                 }
+                .listStyle(.plain)
+                .searchable(text: $viewModel.serchText)
+                .foregroundColor(Color.black)
+                .navigationTitle("曲検索")
             }
         }
     }

@@ -13,14 +13,8 @@ struct SerchMusicListView: View {
     @ObservedObject var viewModel = SerchMusicViewModel()
     
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                SerchTextField()
-                Spacer()
-            }
-            MusicList()
-        }
+        MusicList()
+            .padding(.top, 50.0)
     }
 }
 

@@ -14,6 +14,7 @@ struct iTunesAPI {
         let baseURL = "https://itunes.apple.com/search?"
         
         let queryItems = [URLQueryItem(name: "term", value: serchText),
+                          //URLQueryItem(name: "country", value: "jp"),
                           URLQueryItem(name: "limit", value: String(limit)),
                           URLQueryItem(name: "offset", value: String(offset))]
         

@@ -19,6 +19,7 @@ struct Results: Codable {
     let trackName: String
     let collectionName: String
     let artworkUrl100: String
+    let previewUrl: String
     
     enum CodingKeys: String, CodingKey {
         
@@ -27,6 +28,7 @@ struct Results: Codable {
         case trackName
         case collectionName
         case artworkUrl100
+        case previewUrl
     }
 }
 

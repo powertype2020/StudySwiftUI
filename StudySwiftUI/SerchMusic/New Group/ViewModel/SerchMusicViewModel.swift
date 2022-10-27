@@ -7,6 +7,8 @@
 
 import Foundation
 import Combine
+import AVFAudio
+import AVFoundation
 
 class SerchMusicViewModel: ObservableObject {
     
@@ -27,8 +29,13 @@ class SerchMusicViewModel: ObservableObject {
         }
     }
     @Published var serchText = ""
+    @Published var previewMusicUrl = ""
+    @Published var previewMusicName = ""
+    @Published var playImageChange = false
+    @Published var toggleMiniPlayerMusicName = false
     let limit = 20
     var page = 0
+    var audioPlayer: AVPlayer?
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -97,5 +104,44 @@ class SerchMusicViewModel: ObservableObject {
             }
         })
         print(requestURL)
+    }
+    
+    func startPlayMusic(withUrl previewUrl: String, withName previewName: String) {
+        guard playImageChange == false else {
+            return
+        }
+        let url = previewUrl
+        let name = previewName
+        previewMusicName = name
+        let audioPlayerUrl = URL(string: url)
+        guard audioPlayerUrl != nil else { return }
+        audioPlayer = AVPlayer.init(playerItem: AVPlayerItem(url: audioPlayerUrl!))
+        
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(playerDidFinishPlaying), name: .AVPlayerItemDidPlayToEndTime, object: audioPlayer?.currentItem)
+        
+        Timer.scheduledTimer(withTimeInterval: 1/60, repeats: true) { timer in
+            if let audioPlayer = self.audioPlayer,
+               let currentItem = audioPlayer.currentItem,
+               currentItem.status == .readyToPlay {
+                //let timeElapsed = CMTimeGetSeconds(audioPlayer.currentTime())
+                //let timeDuration = currentItem.duration.seconds
+            }
+        }
+        audioPlayer?.play()
+        playImageChange = true
+        toggleMiniPlayerMusicName = true
+        print(previewMusicUrl)
+    }
+    
+    
+    @objc func playerDidFinishPlaying(note: NSNotification) {
+        
+    }
+    
+    func stopMusic() {
+        audioPlayer?.pause()
+        playImageChange = false
+        toggleMiniPlayerMusicName = false
     }
 }
