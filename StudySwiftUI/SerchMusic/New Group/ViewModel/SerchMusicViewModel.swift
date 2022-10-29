@@ -145,3 +145,21 @@ class SerchMusicViewModel: ObservableObject {
         toggleMiniPlayerMusicName = false
     }
 }
+
+// MARK: yamasakiリファクタ用
+extension SerchMusicViewModel {
+
+    func fetchMusic2() {
+        let request = MusicRequest(serchText: serchText, limit: limit, offset: limit*page)
+        APIRequestProvider.request(request, completion: { result in
+            switch(result) {
+            case let .success(result):
+                // 成功した時の処理
+                dump(result)
+            case let .failure(error):
+                // エラー処理をごちゃごちゃする
+                print(error.errorDescription ?? "エラー処理を書きます")
+            }
+        })
+    }
+}
