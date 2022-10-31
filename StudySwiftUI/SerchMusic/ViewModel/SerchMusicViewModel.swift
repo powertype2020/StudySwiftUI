@@ -17,6 +17,7 @@ class SerchMusicViewModel: ObservableObject {
         case isLoading
         case loadedAll
         case error(String)
+        case loadedError
     }
     
     @Published var results = [Results]()
@@ -32,6 +33,7 @@ class SerchMusicViewModel: ObservableObject {
     @Published var previewMusicName = ""
     @Published var playImageChange = false
     @Published var toggleMiniPlayerMusicName = false
+    @Published var selectedValue = false
     private let limit = 20
     private var page = 0
     var audioPlayer: AVPlayer?
@@ -78,31 +80,27 @@ class SerchMusicViewModel: ObservableObject {
                 }
             case let .failure(error):
                 switch error {
-                case let .invalidResponse(statusCode):
-                    switch statusCode {
-                    case 400:
-                        print("statusCode \(statusCode): 構文無効であるためサーバーがリクエストを理解できません")
-                    case 403:
-                        print("statusCode \(statusCode): アクセス権がありません")
-                    case 404:
-                        print("statusCode \(statusCode): リソースが発見できません、URLが無効です")
-                    case 500:
-                        print("statusCode \(statusCode): サーバーが処理できませんでした")
-                    default:
-                        print("statusCode \(statusCode): その他のエラーです")
-                    }
                 case .invalidData:
                     print("データが無効です")
                 case .error:
+                    self.loadError()
                     print("エラーです: \(error.localizedDescription)")
                 case .decodingError(err: _):
                     print("デコードエラーです: \(error.localizedDescription)")
                 case .invalidUrl:
                     print("URLが無効です")
+                default:
+                    print(error.errorDescription ?? "エラー処理を書きます")
                 }
             }
         })
         print(requestURL)
+    }
+    
+    func loadError() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.state = .loadedError
+        }
     }
     
     func startPlayMusic(withUrl previewUrl: String, withName previewName: String) {

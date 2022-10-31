@@ -12,7 +12,6 @@
 		6D354EBF28FD715200A1F194 /* MusicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D354EBE28FD715200A1F194 /* MusicList.swift */; };
 		6D4A6D9528E6B4910032C20D /* WalkthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A6D9428E6B4910032C20D /* WalkthroughView.swift */; };
 		6D4A6D9928E6CC550032C20D /* WalkthroughDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A6D9828E6CC550032C20D /* WalkthroughDetailView.swift */; };
-		6D59986628FB3AFB002FEA14 /* SerchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59986528FB3AFB002FEA14 /* SerchTextField.swift */; };
 		6D9FCAE928FFD06E00356C55 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9FCAE828FFD06E00356C55 /* APIError.swift */; };
 		6DE2F4E328E4134D0080BF92 /* WalkthroughViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE2F4E228E4134D0080BF92 /* WalkthroughViewModel.swift */; };
 		6DE2F4E528E416130080BF92 /* WalkthroughModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE2F4E428E416130080BF92 /* WalkthroughModel.swift */; };
@@ -50,7 +49,6 @@
 		6D354EBE28FD715200A1F194 /* MusicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicList.swift; sourceTree = "<group>"; };
 		6D4A6D9428E6B4910032C20D /* WalkthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughView.swift; sourceTree = "<group>"; };
 		6D4A6D9828E6CC550032C20D /* WalkthroughDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughDetailView.swift; sourceTree = "<group>"; };
-		6D59986528FB3AFB002FEA14 /* SerchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerchTextField.swift; sourceTree = "<group>"; };
 		6D9FCAE828FFD06E00356C55 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		6DE2F4E228E4134D0080BF92 /* WalkthroughViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewModel.swift; sourceTree = "<group>"; };
 		6DE2F4E428E416130080BF92 /* WalkthroughModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughModel.swift; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 			children = (
 				6D354EBE28FD715200A1F194 /* MusicList.swift */,
 				6D354EB828FD1F0300A1F194 /* SerchMusicListView.swift */,
-				6D59986528FB3AFB002FEA14 /* SerchTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -376,7 +373,6 @@
 				6D9FCAE928FFD06E00356C55 /* APIError.swift in Sources */,
 				6D354EB928FD1F0300A1F194 /* SerchMusicListView.swift in Sources */,
 				6DE2F4E328E4134D0080BF92 /* WalkthroughViewModel.swift in Sources */,
-				6D59986628FB3AFB002FEA14 /* SerchTextField.swift in Sources */,
 				6D4A6D9928E6CC550032C20D /* WalkthroughDetailView.swift in Sources */,
 				6DEE6765290F95A0007EACBA /* SerchMusicModel.swift in Sources */,
 				6DEE6761290F9585007EACBA /* GenericAPIMethod.swift in Sources */,

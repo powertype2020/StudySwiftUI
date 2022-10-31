@@ -38,66 +38,69 @@ struct MusicList: View {
                 case .error(let message):
                     Text(message)
                         .foregroundColor(Color.red)
+                case .loadedError:
+                    Text("検索できませんでした: URLが無効の可能性があります")
+                        .foregroundColor(Color.red)
                 }
-                List {
-                    ForEach(viewModel.results, id:\.trackId) { item in
-                        HStack {
-                            ZStack {
-                                AsyncImage(url: URL(string: item.artworkUrl100)) { image in
-                                    image.resizable()
-                                } placeholder: {
-                                    ProgressView()
-                                        .progressViewStyle(.circular)
-                                }
-                                .frame(width: 120.0, height: 120.0)
-                                Image(systemName:"\(viewModel.playImageChange ? "stop.circle" : "play.fill")")
-                                    .font(.system(size: 80))
-                                    .frame(width: 100.0, height: 100.0)
-                                    .foregroundColor(Color.white)
-                                    .onTapGesture {
-                                        guard viewModel.playImageChange == false else {
-                                            viewModel.stopMusic()
-                                            return
-                                        }
-                                        viewModel.startPlayMusic(withUrl: item.previewUrl, withName: item.trackName)
-                                    }
-                            }
-                            Spacer()
-                            VStack {
-                                Text(item.trackName)
-                                    .font(.headline)
-                                    .foregroundColor(Color.black)
-                                    .multilineTextAlignment(.center)
-                                Spacer()
-                                Text(item.collectionName)
-                                    .font(.subheadline)
-                                    .foregroundColor(Color.black)
-                                    .multilineTextAlignment(.center)
-                                Text(item.artistName)
-                                    .font(.footnote)
-                                    .foregroundColor(Color.black)
-                                    .multilineTextAlignment(.center)
-                            }
-                        }
+                if viewModel.serchText.isEmpty {
+                    HStack {
+                        Spacer()
+                        Text("No word: 検索してください")
+                        Spacer()
                     }
-                    if viewModel.serchText.isEmpty {
-                        HStack {
-                            Spacer()
-                            Text("No word: 検索してください")
-                            Spacer()
+                } else {
+                    List {
+                        ForEach(viewModel.results, id:\.trackId) { item in
+                            HStack {
+                                ZStack {
+                                    AsyncImage(url: URL(string: item.artworkUrl100)) { image in
+                                        image.resizable()
+                                    } placeholder: {
+                                        ProgressView()
+                                            .progressViewStyle(.circular)
+                                    }
+                                    .frame(width: 120.0, height: 120.0)
+                                    Image(systemName:"\(viewModel.playImageChange ? "stop.circle" : "play.fill")")
+                                        .font(.system(size: 80))
+                                        .frame(width: 100.0, height: 100.0)
+                                        .foregroundColor(Color.white)
+                                        .onTapGesture {
+                                            guard viewModel.playImageChange == false else {
+                                                viewModel.stopMusic()
+                                                return
+                                            }
+                                            viewModel.startPlayMusic(withUrl: item.previewUrl, withName: item.trackName)
+                                        }
+                                }
+                                Spacer()
+                                VStack {
+                                    Text(item.trackName)
+                                        .font(.headline)
+                                        .foregroundColor(Color.black)
+                                        .multilineTextAlignment(.center)
+                                    Spacer()
+                                    Text(item.collectionName)
+                                        .font(.subheadline)
+                                        .foregroundColor(Color.black)
+                                        .multilineTextAlignment(.center)
+                                    Text(item.artistName)
+                                        .font(.footnote)
+                                        .foregroundColor(Color.black)
+                                        .multilineTextAlignment(.center)
+                                }
+                            }
                         }
-                    } else {
                         Color.clear
                             .onAppear {
                                 viewModel.loadMore()
                             }
                     }
+                    .listStyle(.plain)
                 }
-                .listStyle(.plain)
-                .searchable(text: $viewModel.serchText)
-                .foregroundColor(Color.black)
-                .navigationTitle("曲検索")
             }
+            .searchable(text: $viewModel.serchText)
+            .foregroundColor(Color.black)
+            .navigationTitle("曲検索")
         }
     }
 }
