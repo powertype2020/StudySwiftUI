@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D0544B22901450B0014B9A8 /* ItunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0544B12901450B0014B9A8 /* ItunesAPI.swift */; };
 		6D354EB928FD1F0300A1F194 /* SerchMusicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D354EB828FD1F0300A1F194 /* SerchMusicListView.swift */; };
+		6D354EBF28FD715200A1F194 /* MusicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D354EBE28FD715200A1F194 /* MusicList.swift */; };
 		6D4A6D9528E6B4910032C20D /* WalkthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A6D9428E6B4910032C20D /* WalkthroughView.swift */; };
 		6D4A6D9928E6CC550032C20D /* WalkthroughDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A6D9828E6CC550032C20D /* WalkthroughDetailView.swift */; };
-		6D59986628FB3AFB002FEA14 /* MusicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59986528FB3AFB002FEA14 /* MusicList.swift */; };
+		6D9FCAE928FFD06E00356C55 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9FCAE828FFD06E00356C55 /* APIError.swift */; };
 		6DE2F4E328E4134D0080BF92 /* WalkthroughViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE2F4E228E4134D0080BF92 /* WalkthroughViewModel.swift */; };
 		6DE2F4E528E416130080BF92 /* WalkthroughModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE2F4E428E416130080BF92 /* WalkthroughModel.swift */; };
+		6DEE6761290F9585007EACBA /* GenericAPIMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEE675F290F9585007EACBA /* GenericAPIMethod.swift */; };
+		6DEE6762290F9585007EACBA /* SerchMusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEE6760290F9585007EACBA /* SerchMusicViewModel.swift */; };
+		6DEE6765290F95A0007EACBA /* SerchMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEE6764290F95A0007EACBA /* SerchMusicModel.swift */; };
 		6DF1101D28E288E1006A796F /* StudySwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF1101C28E288E1006A796F /* StudySwiftUIApp.swift */; };
 		6DF1102128E288E2006A796F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DF1102028E288E2006A796F /* Assets.xcassets */; };
 		6DF1102428E288E2006A796F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DF1102328E288E2006A796F /* Preview Assets.xcassets */; };
@@ -39,12 +44,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D0544B12901450B0014B9A8 /* ItunesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesAPI.swift; sourceTree = "<group>"; };
 		6D354EB828FD1F0300A1F194 /* SerchMusicListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerchMusicListView.swift; sourceTree = "<group>"; };
+		6D354EBE28FD715200A1F194 /* MusicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicList.swift; sourceTree = "<group>"; };
 		6D4A6D9428E6B4910032C20D /* WalkthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughView.swift; sourceTree = "<group>"; };
 		6D4A6D9828E6CC550032C20D /* WalkthroughDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughDetailView.swift; sourceTree = "<group>"; };
-		6D59986528FB3AFB002FEA14 /* MusicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicList.swift; sourceTree = "<group>"; };
+		6D9FCAE828FFD06E00356C55 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		6DE2F4E228E4134D0080BF92 /* WalkthroughViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewModel.swift; sourceTree = "<group>"; };
 		6DE2F4E428E416130080BF92 /* WalkthroughModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughModel.swift; sourceTree = "<group>"; };
+		6DEE675F290F9585007EACBA /* GenericAPIMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericAPIMethod.swift; sourceTree = "<group>"; };
+		6DEE6760290F9585007EACBA /* SerchMusicViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerchMusicViewModel.swift; sourceTree = "<group>"; };
+		6DEE6764290F95A0007EACBA /* SerchMusicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerchMusicModel.swift; sourceTree = "<group>"; };
 		6DF1101928E288E0006A796F /* StudySwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudySwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF1101C28E288E1006A796F /* StudySwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySwiftUIApp.swift; sourceTree = "<group>"; };
 		6DF1102028E288E2006A796F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,12 +91,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D0544B0290144DB0014B9A8 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				6D0544B12901450B0014B9A8 /* ItunesAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		6D354EB428FD176A00A1F194 /* Walkthrough */ = {
 			isa = PBXGroup;
 			children = (
-				6D354EC228FE7B3A00A1F194 /* ViewModel */,
-				6D354EC128FE7B2600A1F194 /* View */,
-				6D354EC028FE7B0F00A1F194 /* Model */,
+				6D354EC628FE89E100A1F194 /* Model */,
+				6D354EC728FE89EA00A1F194 /* View */,
+				6D354EC828FE89F000A1F194 /* ViewModel */,
 			);
 			path = Walkthrough;
 			sourceTree = "<group>";
@@ -94,14 +112,16 @@
 		6D354EB528FD185100A1F194 /* SerchMusic */ = {
 			isa = PBXGroup;
 			children = (
-				6D354EC528FE7B5A00A1F194 /* ViewModel */,
-				6D354EC428FE7B5300A1F194 /* View */,
-				6D354EC328FE7B4800A1F194 /* Model */,
+				6DEE6763290F95A0007EACBA /* Model */,
+				6DEE675E290F9585007EACBA /* ViewModel */,
+				6D0544B0290144DB0014B9A8 /* API */,
+				6D9FCAE728FFD03500356C55 /* ErrorHandring */,
+				6D354ECB28FE8A1D00A1F194 /* View */,
 			);
 			path = SerchMusic;
 			sourceTree = "<group>";
 		};
-		6D354EC028FE7B0F00A1F194 /* Model */ = {
+		6D354EC628FE89E100A1F194 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				6DE2F4E428E416130080BF92 /* WalkthroughModel.swift */,
@@ -109,7 +129,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		6D354EC128FE7B2600A1F194 /* View */ = {
+		6D354EC728FE89EA00A1F194 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				6D4A6D9428E6B4910032C20D /* WalkthroughView.swift */,
@@ -118,7 +138,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		6D354EC228FE7B3A00A1F194 /* ViewModel */ = {
+		6D354EC828FE89F000A1F194 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				6DE2F4E228E4134D0080BF92 /* WalkthroughViewModel.swift */,
@@ -126,27 +146,39 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		6D354EC328FE7B4800A1F194 /* Model */ = {
+		6D354ECB28FE8A1D00A1F194 /* View */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		6D354EC428FE7B5300A1F194 /* View */ = {
-			isa = PBXGroup;
-			children = (
+				6D354EBE28FD715200A1F194 /* MusicList.swift */,
 				6D354EB828FD1F0300A1F194 /* SerchMusicListView.swift */,
-				6D59986528FB3AFB002FEA14 /* MusicList.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		6D354EC528FE7B5A00A1F194 /* ViewModel */ = {
+		6D9FCAE728FFD03500356C55 /* ErrorHandring */ = {
 			isa = PBXGroup;
 			children = (
+				6D9FCAE828FFD06E00356C55 /* APIError.swift */,
 			);
-			path = ViewModel;
+			path = ErrorHandring;
+			sourceTree = "<group>";
+		};
+		6DEE675E290F9585007EACBA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6DEE675F290F9585007EACBA /* GenericAPIMethod.swift */,
+				6DEE6760290F9585007EACBA /* SerchMusicViewModel.swift */,
+			);
+			name = ViewModel;
+			path = StudySwiftUI/SerchMusic/ViewModel;
+			sourceTree = SOURCE_ROOT;
+		};
+		6DEE6763290F95A0007EACBA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6DEE6764290F95A0007EACBA /* SerchMusicModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		6DF1101028E288E0006A796F = {
@@ -336,12 +368,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D0544B22901450B0014B9A8 /* ItunesAPI.swift in Sources */,
 				6D4A6D9528E6B4910032C20D /* WalkthroughView.swift in Sources */,
+				6D9FCAE928FFD06E00356C55 /* APIError.swift in Sources */,
 				6D354EB928FD1F0300A1F194 /* SerchMusicListView.swift in Sources */,
 				6DE2F4E328E4134D0080BF92 /* WalkthroughViewModel.swift in Sources */,
-				6D59986628FB3AFB002FEA14 /* MusicList.swift in Sources */,
 				6D4A6D9928E6CC550032C20D /* WalkthroughDetailView.swift in Sources */,
+				6DEE6765290F95A0007EACBA /* SerchMusicModel.swift in Sources */,
+				6DEE6761290F9585007EACBA /* GenericAPIMethod.swift in Sources */,
+				6DEE6762290F9585007EACBA /* SerchMusicViewModel.swift in Sources */,
 				6DF1101D28E288E1006A796F /* StudySwiftUIApp.swift in Sources */,
+				6D354EBF28FD715200A1F194 /* MusicList.swift in Sources */,
 				6DE2F4E528E416130080BF92 /* WalkthroughModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

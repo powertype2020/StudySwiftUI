@@ -18,8 +18,7 @@ struct WalkthroughView: View {
             Spacer()
             Button("\(viewModel.nextButtonTextChange ? "スタート！": "次へ")") {
                 viewModel.nextButton()
-            }
-            .sheet(isPresented: self.$viewModel.nextSerchMusic) {
+            }.sheet(isPresented: $viewModel.nextSerchMusic) {
                 SerchMusicListView()
             }
             .frame(width: 300.0, height: 50.0)
@@ -31,6 +30,7 @@ struct WalkthroughView: View {
         .background(Color.pink)
     }
 }
+
 
 struct WalkthroughView_Previews: PreviewProvider {
     static let viewModel = WalkthroughViewModel()

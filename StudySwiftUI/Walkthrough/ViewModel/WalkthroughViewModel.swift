@@ -49,5 +49,5 @@ class WalkthroughViewModel: ObservableObject {
         let secondLastPageIndex = pageList.count - 2
         let islastPageOrMore = currentPage > secondLastPageIndex
         nextButtonTextChange = islastPageOrMore
-        }
+    }
 }
