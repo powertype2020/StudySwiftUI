@@ -14,14 +14,31 @@ struct MusicList: View {
     
     var body: some View {
         if(viewModel.toggleMiniPlayerMusicName) {
-            ZStack {
-                Color.white
-                    .cornerRadius(10)
-                    .frame(width: 300, height: 50)
-                Text("再生中: \(viewModel.previewMusicName)")
+            VStack {
+                AsyncImage(url: URL(string: viewModel.previewMusicImage)) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                }
+                .frame(width: 180.0, height: 180.0)
+                Text("再生中")
+                    .font(.headline)
+                    .foregroundColor(Color("TextColor"))
+                Text("\(viewModel.previewMusicName)")
                     .frame(width: 280, height: 45)
                     .font(.subheadline)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color("TextColor"))
+                Image(systemName: "stop.circle")
+                    .font(.system(size: 80))
+                    .frame(width: 100.0, height: 100.0)
+                    .foregroundColor(Color("TextColor"))
+                    .onTapGesture {
+                        viewModel.stopMusic()
+                    }
+                Text("stop Music")
+                    .font(.subheadline)
+                    .foregroundColor(Color("TextColor"))
             }
         }
         NavigationView {
@@ -29,12 +46,13 @@ struct MusicList: View {
                 switch viewModel.state {
                 case .good:
                     Text("検索結果:\(viewModel.serchText)")
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color("TextColor"))
                 case .isLoading:
                     ProgressView()
                         .progressViewStyle(.circular)
                 case .loadedAll:
                     Text("検索結果: Empty")
+                        .foregroundColor(Color("TextColor"))
                 case .error(let message):
                     Text(message)
                         .foregroundColor(Color.red)
@@ -46,6 +64,7 @@ struct MusicList: View {
                     HStack {
                         Spacer()
                         Text("No word: 検索してください")
+                            .foregroundColor(Color("TextColor"))
                         Spacer()
                     }
                 } else {
@@ -60,32 +79,34 @@ struct MusicList: View {
                                             .progressViewStyle(.circular)
                                     }
                                     .frame(width: 120.0, height: 120.0)
-                                    Image(systemName:"\(viewModel.playImageChange ? "stop.circle" : "play.fill")")
-                                        .font(.system(size: 80))
-                                        .frame(width: 100.0, height: 100.0)
-                                        .foregroundColor(Color.white)
-                                        .onTapGesture {
-                                            guard viewModel.playImageChange == false else {
-                                                viewModel.stopMusic()
-                                                return
+                                    if viewModel.playImageChange == false {
+                                        Image(systemName: "play.fill")
+                                            .font(.system(size: 80))
+                                            .frame(width: 100.0, height: 100.0)
+                                            .foregroundColor(Color.white)
+                                            .onTapGesture {
+                                                guard viewModel.playImageChange == false else {
+                                                    viewModel.stopMusic()
+                                                    return
+                                                }
+                                                viewModel.startPlayMusic(withUrl: item.previewUrl, withName: item.trackName, withImage: item.artworkUrl100)
                                             }
-                                            viewModel.startPlayMusic(withUrl: item.previewUrl, withName: item.trackName)
-                                        }
+                                    }
                                 }
                                 Spacer()
                                 VStack {
                                     Text(item.trackName)
                                         .font(.headline)
-                                        .foregroundColor(Color.black)
+                                        .foregroundColor(Color("TextColor"))
                                         .multilineTextAlignment(.center)
                                     Spacer()
                                     Text(item.collectionName)
                                         .font(.subheadline)
-                                        .foregroundColor(Color.black)
+                                        .foregroundColor(Color("TextColor"))
                                         .multilineTextAlignment(.center)
                                     Text(item.artistName)
                                         .font(.footnote)
-                                        .foregroundColor(Color.black)
+                                        .foregroundColor(Color("TextColor"))
                                         .multilineTextAlignment(.center)
                                 }
                             }
@@ -99,8 +120,8 @@ struct MusicList: View {
                 }
             }
             .searchable(text: $viewModel.serchText)
-            .foregroundColor(Color.black)
             .navigationTitle("曲検索")
+            .foregroundColor(Color("TextColor"))
         }
     }
 }
