@@ -21,8 +21,7 @@ class SerchMusicViewModel: ObservableObject {
     
     @Published var results = [Results]()
     @Published var errorHandring = APIError.self
-    @Published var genericAPIMethod = GenericAPIMethod()
-    @Published var iTunesApi = iTunesAPI()
+    @Published var itunesApi = ItunesAPI()
     @Published var state: State = .good {
         didSet {
             print(state)
@@ -33,8 +32,8 @@ class SerchMusicViewModel: ObservableObject {
     @Published var previewMusicName = ""
     @Published var playImageChange = false
     @Published var toggleMiniPlayerMusicName = false
-    let limit = 20
-    var page = 0
+    private let limit = 20
+    private var page = 0
     var audioPlayer: AVPlayer?
     
     private var subscriptions = Set<AnyCancellable>()
@@ -64,9 +63,9 @@ class SerchMusicViewModel: ObservableObject {
             return
         }
         
-        guard let requestURL = iTunesApi.createURL(for: serchText, limit: limit, offset: limit * page) else { return }
+        guard let requestURL = itunesApi.createURL(for: serchText, limit: limit, offset: limit * page) else { return }
         state = .isLoading
-        genericAPIMethod.fetch(to: Response.self, with: requestURL, completion: { result in
+        fetch(to: Response.self, with: requestURL, completion: { result in
             switch(result) {
             case let .success(json):
                 dump(json)

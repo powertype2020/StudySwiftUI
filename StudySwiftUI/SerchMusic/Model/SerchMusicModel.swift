@@ -21,15 +21,6 @@ struct Results: Codable {
     let artworkUrl100: String
     let previewUrl: String
     
-    enum CodingKeys: String, CodingKey {
-        
-        case trackId
-        case artistName
-        case trackName
-        case collectionName
-        case artworkUrl100
-        case previewUrl
-    }
 }
 
 

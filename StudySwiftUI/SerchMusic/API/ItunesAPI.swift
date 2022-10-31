@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct iTunesAPI {
+struct ItunesAPI {
     
     func createURL(for serchText: String, limit: Int, offset: Int) -> URL? {
         let baseURL = "https://itunes.apple.com/search?"

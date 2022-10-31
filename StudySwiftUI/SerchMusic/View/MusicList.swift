@@ -80,10 +80,18 @@ struct MusicList: View {
                             }
                         }
                     }
-                    Color.clear
-                        .onAppear {
-                            viewModel.loadMore()
+                    if viewModel.serchText.isEmpty {
+                        HStack {
+                            Spacer()
+                            Text("No word: 検索してください")
+                            Spacer()
                         }
+                    } else {
+                        Color.clear
+                            .onAppear {
+                                viewModel.loadMore()
+                            }
+                    }
                 }
                 .listStyle(.plain)
                 .searchable(text: $viewModel.serchText)
