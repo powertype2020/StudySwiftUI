@@ -50,16 +50,16 @@ struct MusicList: View {
                                         .progressViewStyle(.circular)
                                 }
                                 .frame(width: 120.0, height: 120.0)
-                                Image(systemName:"\(viewModel.playImageChange ? "stop.circle" : "play.fill")")
+                                Image(systemName:"\(viewModel.selectedMusic?.trackId == item.trackId ? "stop.circle" : "play.fill")")
                                     .font(.system(size: 80))
                                     .frame(width: 100.0, height: 100.0)
                                     .foregroundColor(Color.white)
                                     .onTapGesture {
-                                        guard viewModel.playImageChange == false else {
-                                            viewModel.stopMusic()
+                                        guard viewModel.selectedMusic?.trackId == item.trackId else {
+                                            viewModel.startPlayMusic(withUrl: item.previewUrl, withName: item.trackName, music: item)
                                             return
                                         }
-                                        viewModel.startPlayMusic(withUrl: item.previewUrl, withName: item.trackName)
+                                        viewModel.stopMusic()
                                     }
                             }
                             Spacer()

@@ -31,7 +31,7 @@ class SerchMusicViewModel: ObservableObject {
     @Published var serchText = ""
     @Published var previewMusicUrl = ""
     @Published var previewMusicName = ""
-    @Published var playImageChange = false
+    @Published var selectedMusic: Results?
     @Published var toggleMiniPlayerMusicName = false
     let limit = 20
     var page = 0
@@ -106,10 +106,8 @@ class SerchMusicViewModel: ObservableObject {
         print(requestURL)
     }
     
-    func startPlayMusic(withUrl previewUrl: String, withName previewName: String) {
-        guard playImageChange == false else {
-            return
-        }
+    func startPlayMusic(withUrl previewUrl: String, withName previewName: String, music: Results) {
+        
         let url = previewUrl
         let name = previewName
         previewMusicName = name
@@ -129,7 +127,7 @@ class SerchMusicViewModel: ObservableObject {
             }
         }
         audioPlayer?.play()
-        playImageChange = true
+        selectedMusic = music
         toggleMiniPlayerMusicName = true
         print(previewMusicUrl)
     }
@@ -141,7 +139,7 @@ class SerchMusicViewModel: ObservableObject {
     
     func stopMusic() {
         audioPlayer?.pause()
-        playImageChange = false
+        selectedMusic = nil
         toggleMiniPlayerMusicName = false
     }
 }
